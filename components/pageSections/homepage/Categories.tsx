@@ -27,12 +27,12 @@ const Category = () => {
   ];
   return (
     <>
-      <div className="flex flex-col border-r-[1px] border-solid border-white/10 sticky top-0">
+      <div className="flex flex-col sticky top-0">
         <ul className="pr-2 py-2">
           {categories.map((category) => (
             <li
               key={category.id}
-              className={`cursor-pointer text-${category.color}-500 hover:bg-${category.color}-500/10 px-4 text-base rounded-md py-1.5`}
+              className={`cursor-pointer text-white/60 hover:bg-${category.color}-500/10 hover:text-${category.color}-500 px-4 text-base rounded-md py-1.5`}
             >
               {category.name}
             </li>

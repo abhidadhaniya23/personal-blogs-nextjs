@@ -18,7 +18,7 @@ export default function Home() {
         <div className="col-span-2">
           <Category />
         </div>
-        <div className="col-span-8">
+        <div className="col-span-8 border-l-[1px] border-solid border-white/10">
           <div className="bg-black z-20 sticky top-0 py-2 border-b-[1px] border-solid border-white/10">
             <Months />
           </div>

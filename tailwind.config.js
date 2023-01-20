@@ -18,12 +18,13 @@ module.exports = {
     {
       pattern:
         /text-(gray|cyan|red|yellow|amber|green|blue|indigo|purple|pink|fuchsia|teal|lime|orange|rose|violet|sky)-(500)/,
-      variants: ["group-hover"],
+      variants: ["group-hover", "hover"],
     },
   ],
   theme: {
     fontFamily: {
       sans: ["Plus Jakarta Sans", "sans-serif"],
+      // sans: ["Inter Tight", "sans-serif"],
     },
     extend: {
       colors: {
@@ -33,5 +34,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("preline/plugin")],
+  plugins: [require("preline/plugin"), require("@tailwindcss/typography")],
 };

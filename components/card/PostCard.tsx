@@ -10,7 +10,7 @@ const PostCard = () => {
     <>
       <Link
         href="/post/hello-world"
-        className="rounded-lg group flex flex-col p-3 border-[1px] border-solid border-white/10 hover:border-white/30"
+        className="rounded-lg group flex flex-col p-3 border-[1px] border-solid border-white/10 hover:border-brand/40"
       >
         <div className="flex flex-col items-center justify-center w-full h-56 bg-gray-100 rounded-lg">
           <img
@@ -22,9 +22,7 @@ const PostCard = () => {
         </div>
         <div className="flex flex-col gap-2 pt-3">
           <p className="text-xs text-white/40">20 Aug 2023</p>
-          <h2
-            className={`text-2xl text-white/80 group-hover:text-${categories[0].color}-500`}
-          >
+          <h2 className={`text-2xl text-white/80 group-hover:text-brand`}>
             Learn NextJs in 15 Minutes like a Pro
           </h2>
           <p className="text-sm text-white/70 font-extralight">
