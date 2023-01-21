@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const PostCard = () => {
@@ -13,12 +14,22 @@ const PostCard = () => {
         className="rounded-lg group flex flex-col p-3 border-[1px] border-solid border-white/10 hover:border-brand/40"
       >
         <div className="flex flex-col items-center justify-center w-full h-56 bg-gray-100 rounded-lg">
-          <img
+          {/* <img
             // src="https://picsum.photos/200/300"
             src="https://images.unsplash.com/photo-1502989642968-94fbdc9eace4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMDY1OTc2fHxlbnwwfHx8fA%3D%3D&w=1000&q=80"
             alt="post"
             className="object-cover w-full h-full rounded-md"
-          />
+          /> */}
+          <div className="w-full h-full overflow-hidden rounded-md">
+            <Image
+              // src="https://picsum.photos/200/300"
+              src="https://images.unsplash.com/photo-1502989642968-94fbdc9eace4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMDY1OTc2fHxlbnwwfHx8fA%3D%3D&w=1000&q=80"
+              width={400}
+              height={300}
+              className="object-cover w-full h-full"
+              alt="blogs"
+            />
+          </div>
         </div>
         <div className="flex flex-col gap-2 pt-3">
           <p className="text-xs text-white/40">20 Aug 2023</p>
