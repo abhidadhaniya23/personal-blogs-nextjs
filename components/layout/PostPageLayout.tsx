@@ -48,6 +48,7 @@ const PostPageLayout = ({
               <div className="grid grid-flow-row mt-3 gap-2 text-white/60">
                 {readNext.map((post: Item) => (
                   <Link
+                    key={post.fields.slug}
                     href={post.fields.slug}
                     className="group grid grid-flow-col gap-1 items-start"
                   >

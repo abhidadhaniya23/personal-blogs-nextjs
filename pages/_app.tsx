@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
   return (
     <>
-      <NextNProgress color="#fff" />
+      <NextNProgress color="#00FA9A" height={2} />
       <Layout>
         <Component {...pageProps} />
       </Layout>
