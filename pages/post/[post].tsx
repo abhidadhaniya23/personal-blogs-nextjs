@@ -3,15 +3,16 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { remark } from "remark";
 import html from "remark-html";
 import { PortableText } from "@portabletext/react";
+import client from "../../client";
 
 const PostContent = ({ content }: { content: any }) => {
   console.log(content);
   return (
     <>
       <PostPageLayout>
-        <article className="prose-base prose-li:list-disc prose-li:marker:text-brand prose-blockquote:bg-brand/5 prose-blockquote:px-5 prose-blockquote:py-0.5 prose-blockquote:border-l-2 prose-blockquote:border-solid prose-blockquote:border-white/50 prose-blockquote:text-white/60 mx-auto prose-headings:text-white/80 prose-headings:font-semibold  prose-a:no-underline prose-a:border-b-[1px] prose-a:pb-0.5 prose-a:border-dashed prose-a:border-brand/70 hover:prose-a:border-solid hover:prose-a:border-brand prose-p:font-normal prose-a:text-white/60 hover:prose-a:text-white prose-a:mx-1 text-white/50">
-          {/* <PortableText value={[content]} /> */}
-          <div dangerouslySetInnerHTML={{ __html: content }}></div>
+        <article className="prose-base prose-li:list-disc prose-li:marker:text-brand prose-blockquote:bg-brand/5 prose-blockquote:px-5 prose-code:bg-white/10 prose-code:mx-1 prose-code:p-1 prose-code:rounded-lg prose-blockquote:py-0.5 prose-blockquote:border-l-2 prose-blockquote:border-solid prose-blockquote:border-white/50 prose-blockquote:text-white/60 mx-auto prose-headings:text-white/80 prose-headings:font-semibold  prose-a:no-underline prose-a:border-b-[1px] prose-a:pb-0.5 prose-a:border-dashed prose-a:border-brand/70 hover:prose-a:border-solid hover:prose-a:border-brand prose-p:font-normal prose-a:text-white/60 hover:prose-a:text-white prose-a:mx-1 text-white/50">
+          <PortableText value={content} />
+          {/* <div dangerouslySetInnerHTML={{ __html: content }}></div> */}
         </article>
       </PostPageLayout>
     </>
@@ -19,21 +20,24 @@ const PostContent = ({ content }: { content: any }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = await client.fetch(
+    `*[_type == "post" && defined(slug.current)][].slug.current`
+  );
   return {
-    paths: [
-      {
-        params: {
-          post: "hello-world",
-        },
-      },
-    ],
-    fallback: false,
+    paths: paths.map((post: string) => ({ params: { post } })),
+    fallback: true,
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
+  const slug = params.post;
+  console.log("slug", slug);
+  const post = await client.fetch(
+    `*[_type == "post" && slug.current == $slug][0]`,
+    { slug }
+  );
   const contentHTML = `
-[React](https://reactjs.org/) [Test](https://blogs.abhidadhaniya.com/) is an open source front-end javascript library to build web application and websites. React is build by [Facebook](https://facebook.com/) in may 2013.
+  [React](https://reactjs.org/) [Test](https://blogs.abhidadhaniya.com/) is an open source front-end javascript library to build web application and websites. React is build by [Facebook](https://facebook.com/) in may 2013.
 
 There are so many resources to learn react.js but here, I've shared my journey about how I learned react.js after learning javascript. Before to learn react.js, You've to learn basic javascript concepts.
 
@@ -81,7 +85,7 @@ So, first explore react.js road map [(github repository)](https://github.com/ada
 
 ### Why I prefer online tutorials over books?
 
-React.js versions update on daily bases. In current version of "react@18.2.0" There are top updates and it [changes](https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html) some code basis of index root files. In this versions they've [updated to server side rendering apis](https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html#updates-to-server-rendering-apis).
+React.js versions update on daily bases. In current version of \`react@18.2.0\` There are top updates and it [changes](https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html) some code basis of index root files. In this versions they've [updated to server side rendering apis](https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html#updates-to-server-rendering-apis).
 So, the point is when you're learning from books, it can't be update but online tutorials can be. That's why, I prefer to learn from online resources.
 
 ## Creating animations with react.js
@@ -100,12 +104,16 @@ Here, I'm mentioning the best websites for react examples
 [I](https://www.abhidadhaniya.com/) and my developer friend [Rohan](https://www.rohankiratsata.xyz/) have created free resources to master full stack web development by using this [free resources](https://web-dev-resources.notion.site/web-dev-resources/Web-Development-Resources-be1207bcc32e434481c1ce6e90756964).
 
 `;
-  const content = await remark().use(html).process(contentHTML);
+  // const content = await remark().use(html).process(contentHTML);
   // const contentHtml = processedContent.toString();
-  console.log(content);
+  // console.log(content);
+
+  // console.log(post.content);
+  // const content = await remark().use(html).process(post.content);
   return {
     props: {
-      content: content.toString(),
+      content: post.body,
+      // content: "",
       // contentHtml,
       // ...matterResult.data,
     },
