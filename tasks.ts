@@ -1,3 +1,5 @@
-// [ ] implement portable text react component for code as well as Link/next
+// [ ] custom 404 page
+// [ ] meta data
+// [ ] google analytics
 
-export default "hello world"
+export default "hello world";

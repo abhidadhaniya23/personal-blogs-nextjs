@@ -1,6 +1,5 @@
 import PostPageLayout from "@/components/layout/PostPageLayout";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { createClient } from "contentful";
+import { GetServerSideProps } from "next";
 import { getBlogs } from "@/contentful/blogs";
 import { Item } from "@/types/blogs";
 import ReactMarkdown from "react-markdown";
@@ -44,15 +43,17 @@ const PostContent = ({
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const res: any = await getBlogs();
-  const paths = res.items.map((post: Item) => ({
-    params: { post: post.fields.slug },
-  }));
-  return { paths, fallback: false };
-};
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const res: any = await getBlogs();
+//   const paths = res.items.map((post: Item) => ({
+//     params: { post: post.fields.slug },
+//   }));
+//   return { paths, fallback: false };
+// };
 
-export const getStaticProps: GetStaticProps = async ({ params }: any) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  params,
+}: any) => {
   const res: any = await getBlogs();
   const data: Item = res.items.filter(
     (post: Item) => post.fields.slug === params.post
