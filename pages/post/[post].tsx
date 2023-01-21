@@ -1,5 +1,5 @@
 import PostPageLayout from "@/components/layout/PostPageLayout";
-import { GetServerSideProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { getBlogs } from "@/contentful/blogs";
 import { BlogsType, Item } from "@/types/blogs";
 import ReactMarkdown from "react-markdown";
@@ -48,6 +48,8 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
         <article className="prose-base prose-li:list-disc prose-li:marker:text-brand prose-blockquote:bg-gray-700/10 prose-blockquote:rounded-br-lg prose-blockquote:rounded-tr-lg prose-blockquote:px-5 prose-strong:text-white/70 prose-code:!font-code prose-pre:!bg-black prose-pre:p-0 prose-pre:m-0 prose-blockquote:py-0.5 prose-blockquote:border-l-2 prose-blockquote:border-solid prose-blockquote:border-white/50 prose-blockquote:text-white/60 mx-auto prose-headings:text-white/80 prose-headings:font-semibold  prose-a:no-underline prose-a:border-b-[1px] prose-a:pb-0.5 prose-a:border-dashed prose-a:border-brand/70 hover:prose-a:border-solid hover:prose-a:border-brand prose-p:font-normal prose-a:text-white/60 hover:prose-a:text-white prose-a:mx-1 text-white/50">
           <Image
             src={"https://" + data.fields.image.fields.file.url}
+            quality={50}
+            priority={true}
             width={640}
             height={300}
             alt={data.fields.title}
@@ -85,17 +87,15 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
   );
 };
 
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const res: any = await getBlogs();
-//   const paths = res.items.map((post: Item) => ({
-//     params: { post: post.fields.slug },
-//   }));
-//   return { paths, fallback: false };
-// };
+export const getStaticPaths: GetStaticPaths = async () => {
+  const res: any = await getBlogs();
+  const paths = res.items.map((post: Item) => ({
+    params: { post: post.fields.slug },
+  }));
+  return { paths, fallback: false };
+};
 
-export const getServerSideProps: GetServerSideProps = async ({
-  params,
-}: any) => {
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const res: any = await getBlogs();
   const data: Item = res.items.filter(
     (post: Item) => post.fields.slug === params.post
