@@ -48,12 +48,12 @@ export interface Metadata {
 export interface AssetSys {
   space: ContentType;
   id: string;
-  type: string;
+  type: FluffyType;
   createdAt: Date;
   updatedAt: Date;
   environment: ContentType;
   revision: number;
-  locale: string;
+  locale: Locale;
   contentType?: ContentType;
 }
 
@@ -63,7 +63,7 @@ export interface ContentType {
 
 export interface ContentTypeSys {
   id: ID;
-  type: Type;
+  type: PurpleType;
   linkType: LinkType;
 }
 
@@ -80,8 +80,17 @@ export enum LinkType {
   Space = "Space",
 }
 
-export enum Type {
+export enum PurpleType {
   Link = "Link",
+}
+
+export enum Locale {
+  EnUS = "en-US",
+}
+
+export enum FluffyType {
+  Asset = "Asset",
+  Entry = "Entry",
 }
 
 export interface Entry {
@@ -108,6 +117,7 @@ export interface ItemFields {
   image: Asset;
   slug: string;
   category: Entry[];
+  description: string;
 }
 
 export interface BlogsTypeSys {

@@ -19,7 +19,7 @@ const PostContent = ({
       {/* <PortableText value={content} /> */}
       {/* <div dangerouslySetInnerHTML={{ __html: content }}></div> */}
       <PostPageLayout>
-        <article className="prose-base prose-li:list-disc prose-li:marker:text-brand prose-blockquote:bg-brand/5 prose-blockquote:px-5 prose-code:bg-white/10 prose-code:mx-1 prose-code:p-1 prose-code:rounded-lg prose-blockquote:py-0.5 prose-blockquote:border-l-2 prose-blockquote:border-solid prose-blockquote:border-white/50 prose-blockquote:text-white/60 mx-auto prose-headings:text-white/80 prose-headings:font-semibold  prose-a:no-underline prose-a:border-b-[1px] prose-a:pb-0.5 prose-a:border-dashed prose-a:border-brand/70 hover:prose-a:border-solid hover:prose-a:border-brand prose-p:font-normal prose-a:text-white/60 hover:prose-a:text-white prose-a:mx-1 text-white/50">
+        <article className="prose-base prose-li:list-disc prose-li:marker:text-brand prose-blockquote:bg-gray-700/10 prose-blockquote:rounded-br-lg prose-blockquote:rounded-tr-lg prose-blockquote:px-5 prose-strong:text-white/70 prose-code:bg-white/10 prose-code:mx-1 prose-code:p-1 prose-code:rounded-lg prose-blockquote:py-0.5 prose-blockquote:border-l-2 prose-blockquote:border-solid prose-blockquote:border-white/50 prose-blockquote:text-white/60 mx-auto prose-headings:text-white/80 prose-headings:font-semibold  prose-a:no-underline prose-a:border-b-[1px] prose-a:pb-0.5 prose-a:border-dashed prose-a:border-brand/70 hover:prose-a:border-solid hover:prose-a:border-brand prose-p:font-normal prose-a:text-white/60 hover:prose-a:text-white prose-a:mx-1 text-white/50">
           <ReactMarkdown
             components={{
               // img: ({ node, ...props }) => (

@@ -3,9 +3,18 @@ import Category from "@/components/pageSections/homepage/Categories";
 import Months from "@/components/pageSections/homepage/Months";
 import getBlogs from "@/contentful/blogs";
 import getCategories from "@/contentful/slug";
+import { CategoryType } from "@/types/category";
+import { BlogsType } from "@/types/blogs";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 
-export default function Home() {
+type Props = {
+  recentBlogs: BlogsType;
+  categories: CategoryType;
+};
+
+export default function Home({ recentBlogs, categories }: Props) {
+  console.log(JSON.stringify(recentBlogs));
   return (
     <>
       <Head>
@@ -17,14 +26,14 @@ export default function Home() {
 
       <div className="grid grid-cols-10">
         <div className="col-span-2">
-          <Category />
+          <Category categories={categories} />
         </div>
         <div className="col-span-8 border-l-[1px] border-solid border-white/10">
           <div className="bg-black z-20 sticky top-0 py-2 border-b-[1px] border-solid border-white/10">
             <Months />
           </div>
           <div className="p-5">
-            <RecentPosts />
+            <RecentPosts recentBlogs={recentBlogs} />
           </div>
         </div>
       </div>
@@ -32,20 +41,24 @@ export default function Home() {
   );
 }
 
-const RecentPosts = () => {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const recentBlogs = await getBlogs();
+  const categories = await getCategories();
+  return {
+    props: {
+      recentBlogs,
+      categories,
+    },
+  };
+};
+
+const RecentPosts = ({ recentBlogs }: { recentBlogs: BlogsType }) => {
   return (
     <>
       <div className="grid grid-flow-row grid-cols-2 gap-4">
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
+        {recentBlogs.items.map((blog) => (
+          <PostCard key={blog.fields.slug} postData={blog} />
+        ))}
       </div>
     </>
   );
