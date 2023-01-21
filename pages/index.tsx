@@ -1,7 +1,8 @@
 import PostCard from "@/components/card/PostCard";
-import Navbar from "@/components/navbar/Navbar";
 import Category from "@/components/pageSections/homepage/Categories";
 import Months from "@/components/pageSections/homepage/Months";
+import getBlogs from "@/contentful/blogs";
+import getCategories from "@/contentful/slug";
 import Head from "next/head";
 
 export default function Home() {

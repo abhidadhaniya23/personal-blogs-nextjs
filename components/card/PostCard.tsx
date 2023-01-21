@@ -9,7 +9,7 @@ const PostCard = () => {
   return (
     <>
       <Link
-        href="/post/hello-world"
+        href="/post/make-component-as-a-senior-developer"
         className="rounded-lg group flex flex-col p-3 border-[1px] border-solid border-white/10 hover:border-brand/40"
       >
         <div className="flex flex-col items-center justify-center w-full h-56 bg-gray-100 rounded-lg">
