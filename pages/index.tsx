@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default function Home({ recentBlogs, categories }: Props) {
-  console.log(JSON.stringify(recentBlogs));
+  // console.log(JSON.stringify(recentBlogs));
   return (
     <>
       <Head>

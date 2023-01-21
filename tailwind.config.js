@@ -24,6 +24,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["Plus Jakarta Sans", "sans-serif"],
+      code: ["JetBrains Mono", "monospace"],
       // sans: ["Inter Tight", "sans-serif"],
     },
     extend: {
