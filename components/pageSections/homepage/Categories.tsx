@@ -1,8 +1,15 @@
 import { CategoryType, CategoryItem } from "@/types/category";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { BsChevronDown } from "react-icons/bs";
 
 const Category = ({ categories }: { categories: CategoryType }) => {
+  const router = useRouter();
+  const isSlugMatched = (slug: string) => {
+    router.pathname.includes("tag/[tag]");
+    return router.query.tag === slug ? true : false;
+  };
+
   return (
     <>
       <div className="flex flex-col md:sticky top-16">
@@ -34,14 +41,21 @@ const Category = ({ categories }: { categories: CategoryType }) => {
             id="navbar-secondary"
             className="hs-collapse overflow-hidden transition-all duration-300 basis-full grow sm:block"
           >
-            <ul className="pr-2 py-2">
+            <ul className="pr-2 py-2 text-white/60">
               {categories.items.map((category: CategoryItem) => (
                 <Link
                   href={`/tag/${category.fields.slug}`}
                   key={category.fields.slug}
                 >
                   <li
-                    className={`cursor-pointer text-white/60 hover:bg-${category.fields.colors}-500/10 hover:text-${category.fields.colors}-500 px-4 text-base rounded-md py-1.5`}
+                    className={`cursor-pointer hover:bg-${
+                      category.fields.colors
+                    }-500/10 hover:text-${
+                      category.fields.colors
+                    }-500 px-4 text-base rounded-md py-1.5 ${
+                      isSlugMatched(category.fields.slug) &&
+                      `bg-${category.fields.colors}-500/10 text-${category.fields.colors}-500`
+                    }`}
                   >
                     {category.fields.name}
                   </li>

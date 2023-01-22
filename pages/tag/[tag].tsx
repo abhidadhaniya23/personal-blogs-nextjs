@@ -17,7 +17,6 @@ const category = ({ blogPosts, categories }: PropsType) => {
     <>
       <CategorySidebarLayout categories={categories}>
         <BlogPosts blogPosts={blogPosts} />
-        {/* <></> */}
       </CategorySidebarLayout>
     </>
   );
