@@ -26,19 +26,21 @@ const PostCard = ({ postData }: { postData: Item }) => {
             />
           </div>
         </div>
-        <div className="flex flex-col gap-2 pt-3">
-          <p className="text-xs text-white/40 flex flex-row gap-2 items-center">
-            <span>{postDate}</span>|
-            <span>{readingTime(postData.fields.body.toString()).text}</span>
-          </p>
+        <div className="flex flex-col gap-2 pt-3 justify-between items-stretch flex-1">
+          <div className="flex flex-col gap-2">
+            <p className="text-xs text-white/40 flex flex-row gap-2 items-center">
+              <span>{postDate}</span>|
+              <span>{readingTime(postData.fields.body.toString()).text}</span>
+            </p>
 
-          <h2 className={`text-2xl text-white/80 group-hover:text-brand`}>
-            {postData.fields.title}
-          </h2>
-          <p className="text-sm text-white/70 font-extralight">
-            {/* {postData.body.toString().slice(0, 100)} */}
-            {postData.fields.description.slice(0, 120)}
-          </p>
+            <h2 className={`text-2xl text-white/80 group-hover:text-brand`}>
+              {postData.fields.title}
+            </h2>
+            <p className="text-sm text-white/70 font-extralight">
+              {/* {postData.body.toString().slice(0, 100)} */}
+              {postData.fields.description.slice(0, 120)}
+            </p>
+          </div>
           <div className="flex flex-row gap-2 flex-wrap mt-1">
             {postData.fields.category.map((category: Entry) => (
               <span

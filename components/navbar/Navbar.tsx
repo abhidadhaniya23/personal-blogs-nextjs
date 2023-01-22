@@ -22,7 +22,7 @@ const Navbar = () => {
   ];
   return (
     <>
-      <header className="bg-black flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm py-4 border-b border-solid border-white/10">
+      <header className="bg-black flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm py-6 border-b border-solid border-white/10">
         <nav
           className="w-full mx-auto sm:flex sm:items-center sm:justify-between"
           aria-label="Global"
@@ -32,7 +32,7 @@ const Navbar = () => {
               href="/"
               className="flex-none text-xl font-semibold text-white"
             >
-              Time Square Blogs
+              Abhi's Blogs
             </Link>
             <div className="sm:hidden">
               <button

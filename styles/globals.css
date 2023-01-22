@@ -6,22 +6,27 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  @apply duration-200;
+}
+::selection {
+  @apply bg-brand text-black;
+}
 html {
   @apply bg-black !scroll-smooth;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
 }
-
 body {
   @apply font-sans;
 }
-
 input,
 button {
   @apply outline-none;
 }
-::selection {
-  @apply bg-brand text-black;
+
+.btn {
+  @apply border border-solid border-white/10 hover:border-white/30 focus:border-white/30 text-white/60 font-medium py-2 px-4 rounded-lg;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
@@ -37,6 +42,23 @@ textarea {
   @apply bg-black rounded-md;
 }
 
-* {
-  @apply duration-200;
+/* --------- Loading Animation styles --------- */
+.loader {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 2px solid #fff;
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 0.5s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

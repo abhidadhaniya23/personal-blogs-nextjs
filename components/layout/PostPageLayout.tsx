@@ -33,7 +33,7 @@ const PostPageLayout = ({
             <ReadNext readNextPosts={readNext} />
           </div>
         </div>
-        <div className="col-span-7 pt-5 lg:p-5 md:border-l border-solid border-white/10">
+        <div className="col-span-7 pt-5 md:p-5 md:border-l border-solid border-white/10">
           {children}
         </div>
       </div>

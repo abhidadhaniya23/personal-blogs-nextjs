@@ -41,7 +41,7 @@ const Category = ({ categories }: { categories: CategoryType }) => {
             id="navbar-secondary"
             className="hs-collapse hidden overflow-hidden transition-all duration-300 grow md:block"
           >
-            <ul className="flex flex-col gap-1 pr-2 py-2 text-white/60">
+            <ul className="flex flex-col gap-1 pr-5 py-5 text-white/60">
               {categories.items.map((category: CategoryItem) => (
                 <Link
                   href={`/tag/${category.fields.slug}`}

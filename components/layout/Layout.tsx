@@ -2,6 +2,8 @@ import Navbar from "@/components/navbar/Navbar";
 import NewsLetter from "./NewsLetter";
 import Head from "next/head";
 import TrendingPosts from "../TrendingPosts";
+import Footer from "../Footer";
+import Gigaweb from "../Gigaweb";
 
 const Layout = ({ children }: { children: JSX.Element }) => {
   return (
@@ -13,12 +15,19 @@ const Layout = ({ children }: { children: JSX.Element }) => {
         <Navbar />
         {children}
         <TrendingPosts />
-        <div className="py-16 border-y border-solid border-white/10">
-          <NewsLetter />
-        </div>
+        {/* <LineBreak /> */}
+        <NewsLetter />
+        {/* <LineBreak /> */}
+        <Gigaweb />
+        <LineBreak />
+        <Footer />
       </div>
     </>
   );
+};
+
+const LineBreak = () => {
+  return <hr className="border-white/10" />;
 };
 
 export default Layout;

@@ -7,6 +7,10 @@ module.exports = {
   ],
   safelist: [
     {
+      pattern: /grid-cols-(1|2|3)/,
+      variants: ["sm", "md", "lg"],
+    },
+    {
       pattern:
         /bg-(gray|cyan|red|yellow|amber|green|blue|indigo|purple|pink|fuchsia|teal|lime|orange|rose|violet|sky)-(500)/,
       variants: ["hover"],
