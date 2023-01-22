@@ -21,11 +21,11 @@ const PostPageLayout = ({
 
   return (
     <>
-      <div className="grid grid-cols-10">
+      <div className="grid grid-cols-1 md:grid-cols-10">
         <div className="col-span-3">
-          <div className="sticky top-5 my-4 mr-4 flex flex-col gap-5">
-            <div className="rounded-lg p-5 border-[1px] border-white/10 border-solid">
-              <h1 className="text-brand pb-3 text-3xl font-medium border-b-[1px] border-white/10 border-solid">
+          <div className="sticky top-5 my-4 md:mr-4 flex flex-col gap-5">
+            <div className="rounded-lg px-5 py-3 border border-white/10 border-solid">
+              <h1 className="text-brand pb-3 text-3xl font-medium border-b border-white/10 border-solid">
                 Table of Contents
               </h1>
               {tableOfContent.length > 0 && (
@@ -41,8 +41,8 @@ const PostPageLayout = ({
                 </ul>
               )}
             </div>
-            <div className="rounded-lg p-5 border-[1px] border-white/10 border-solid">
-              <h1 className="text-brand pb-3 text-3xl font-medium border-b-[1px] border-white/10 border-solid">
+            <div className="rounded-lg px-5 py-3 border border-white/10 border-solid">
+              <h1 className="text-brand pb-3 text-3xl font-medium border-b border-white/10 border-solid">
                 Read Next
               </h1>
               <div className="grid grid-flow-row mt-3 gap-2 text-white/60">
@@ -50,7 +50,7 @@ const PostPageLayout = ({
                   <Link
                     key={post.fields.slug}
                     href={post.fields.slug}
-                    className="group grid grid-flow-col gap-1 items-start"
+                    className="group grid grid-flow-col gap-1 justify-start items-start"
                   >
                     <AiOutlineDoubleRight className="mt-1 text-brand" />
                     <h3 className="group-hover:text-brand">
@@ -62,7 +62,7 @@ const PostPageLayout = ({
             </div>
           </div>
         </div>
-        <div className="col-span-7 p-5 border-l-[1px] border-solid border-white/10">
+        <div className="col-span-7 p-0 lg:p-5 md:border-l border-solid border-white/10">
           {children}
         </div>
       </div>

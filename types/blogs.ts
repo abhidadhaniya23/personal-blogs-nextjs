@@ -102,7 +102,7 @@ export interface Entry {
 export interface EntryFields {
   name: string;
   slug: string;
-  color: string[];
+  colors: string;
 }
 
 export interface Item {

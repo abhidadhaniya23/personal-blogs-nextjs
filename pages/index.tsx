@@ -1,20 +1,19 @@
-import PostCard from "@/components/card/PostCard";
-import Category from "@/components/pageSections/homepage/Categories";
-import Months from "@/components/pageSections/homepage/Months";
 import getBlogs from "@/contentful/blogs";
-import getCategories from "@/contentful/slug";
+import getCategories from "@/contentful/categories";
 import { CategoryType } from "@/types/category";
 import { BlogsType } from "@/types/blogs";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
+import BlogPosts from "@/components/BlogPosts";
+import CategorySidebarLayout from "@/components/layout/CategorySidebarLayout";
 
-type Props = {
+type PropsType = {
   recentBlogs: BlogsType;
   categories: CategoryType;
 };
 
-export default function Home({ recentBlogs, categories }: Props) {
-  // console.log(JSON.stringify(recentBlogs));
+export default function Home({ recentBlogs, categories }: PropsType) {
+  // console.log(JSON.stringify(categories));
   return (
     <>
       <Head>
@@ -24,19 +23,9 @@ export default function Home({ recentBlogs, categories }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="grid grid-cols-10">
-        <div className="col-span-2">
-          <Category categories={categories} />
-        </div>
-        <div className="col-span-8 border-l-[1px] border-solid border-white/10">
-          <div className="bg-black z-20 sticky top-0 py-2 border-b-[1px] border-solid border-white/10">
-            <Months />
-          </div>
-          <div className="p-5">
-            <RecentPosts recentBlogs={recentBlogs} />
-          </div>
-        </div>
-      </div>
+      <CategorySidebarLayout categories={categories}>
+        <BlogPosts blogPosts={recentBlogs} />
+      </CategorySidebarLayout>
     </>
   );
 }
@@ -50,16 +39,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
       categories,
     },
   };
-};
-
-const RecentPosts = ({ recentBlogs }: { recentBlogs: BlogsType }) => {
-  return (
-    <>
-      <div className="grid grid-flow-row grid-cols-2 gap-4">
-        {recentBlogs.items.map((blog) => (
-          <PostCard key={blog.fields.slug} postData={blog} />
-        ))}
-      </div>
-    </>
-  );
 };

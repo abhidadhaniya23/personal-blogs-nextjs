@@ -3,10 +3,10 @@ export interface CategoryType {
   total: number;
   skip: number;
   limit: number;
-  items: Item[];
+  items: CategoryItem[];
 }
 
-export interface Item {
+export interface CategoryItem {
   metadata: Metadata;
   sys: ItemSys;
   fields: Fields;
@@ -15,7 +15,7 @@ export interface Item {
 export interface Fields {
   name: string;
   slug: string;
-  color: string[];
+  colors: string;
 }
 
 export interface Metadata {

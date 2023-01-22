@@ -1,4 +1,4 @@
-import { CategoryType, Item } from "@/types/category";
+import { CategoryType, CategoryItem } from "@/types/category";
 import Link from "next/link";
 
 const Category = ({ categories }: { categories: CategoryType }) => {
@@ -32,13 +32,13 @@ const Category = ({ categories }: { categories: CategoryType }) => {
     <>
       <div className="flex flex-col sticky top-0">
         <ul className="pr-2 py-2">
-          {categories.items.map((category: Item) => (
+          {categories.items.map((category: CategoryItem) => (
             <Link
-              href={`/category/${category.fields.slug}`}
+              href={`/tag/${category.fields.slug}`}
               key={category.fields.slug}
             >
               <li
-                className={`cursor-pointer text-white/60 hover:bg-${category.fields.color}-500/10 hover:text-${category.fields.color}-500 px-4 text-base rounded-md py-1.5`}
+                className={`cursor-pointer text-white/60 hover:bg-${category.fields.colors}-500/10 hover:text-${category.fields.colors}-500 px-4 text-base rounded-md py-1.5`}
               >
                 {category.fields.name}
               </li>

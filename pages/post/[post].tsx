@@ -4,6 +4,7 @@ import { getBlogs } from "@/contentful/blogs";
 import { BlogsType, Item } from "@/types/blogs";
 import ReactMarkdown from "react-markdown";
 import {
+  blockQuote,
   code,
   h1,
   h2,
@@ -19,6 +20,8 @@ import Image from "next/image";
 import { RiCalendarCheckLine } from "react-icons/ri";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import readingTime from "reading-time";
+import { getPostBySlug } from "@/contentful/getPostBySlug";
+import { EntryCollection } from "contentful";
 
 type PropType = { readNextPosts: BlogsType; data: Item; content: any };
 
@@ -45,17 +48,18 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
         postSlug={router.query.post as string}
         tableOfContent={headings}
       >
-        <article className="prose-base prose-li:list-disc prose-li:marker:text-brand prose-blockquote:bg-gray-700/10 prose-blockquote:rounded-br-lg prose-blockquote:rounded-tr-lg prose-blockquote:px-5 prose-strong:text-white/70 prose-code:!font-code prose-pre:!bg-black prose-pre:p-0 prose-pre:m-0 prose-blockquote:py-0.5 prose-blockquote:border-l-2 prose-blockquote:border-solid prose-blockquote:border-white/50 prose-blockquote:text-white/60 mx-auto prose-headings:text-white/80 prose-headings:font-semibold  prose-a:no-underline prose-a:border-b-[1px] prose-a:pb-0.5 prose-a:border-dashed prose-a:border-brand/70 hover:prose-a:border-solid hover:prose-a:border-brand prose-p:font-normal prose-a:text-white/60 hover:prose-a:text-white prose-a:mx-1 text-white/50">
+        <article className="prose-base prose-li:list-disc prose-li:marker:text-brand prose-blockquote:rounded-lg prose-blockquote:px-5 prose-strong:text-white/70 prose-code:!font-code prose-pre:!bg-black prose-pre:p-0 prose-pre:m-0 prose-blockquote:py-0.5 prose-blockquote:border prose-blockquote:border-solid prose-blockquote:border-white/10 prose-blockquote:text-white/60 mx-auto prose-headings:text-white/80 prose-headings:font-semibold  prose-a:no-underline prose-a:border-b prose-a:pb-0.5 prose-a:border-dashed prose-a:border-brand/70 hover:prose-a:border-solid hover:prose-a:border-brand prose-p:font-normal prose-a:text-white/60 hover:prose-a:text-white prose-a:mx-1 text-white/50">
           <Image
             src={"https://" + data.fields.image.fields.file.url}
             quality={50}
-            priority={true}
             width={640}
             height={300}
             alt={data.fields.title}
             className="rounded-lg"
           />
-          <h1 className="text-5xl !text-brand my-2">{data.fields.title}</h1>
+          <h1 className="text-3xl sm:text-4xl !text-brand my-2">
+            {data.fields.title}
+          </h1>
           <p className="flex gap-4 text-white/70">
             <span className="flex gap-2 items-center">
               <RiCalendarCheckLine size={18} /> {postDate}
@@ -68,6 +72,8 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
           </p>
           <ReactMarkdown
             components={{
+              // quote: quoteBlock,
+              blockquote: blockQuote,
               img: image,
               code: code,
               h1: h1,
@@ -96,12 +102,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const res: any = await getBlogs();
-  const data: Item = res.items.filter(
-    (post: Item) => post.fields.slug === params.post
-  )[0];
+  const res: EntryCollection<BlogsType> =
+    (await getBlogs()) as EntryCollection<BlogsType>;
+  const data: BlogsType = await getPostBySlug(params.post);
+  const content = data.items[0].fields.body;
   return {
-    props: { readNextPosts: res, data: data, content: data.fields.body },
+    props: {
+      readNextPosts: res,
+      data: data.items[0],
+      content,
+    },
   };
 };
 
