@@ -22,11 +22,13 @@ import { AiOutlineFieldTime } from "react-icons/ai";
 import readingTime from "reading-time";
 import { getPostBySlug } from "@/contentful/getPostBySlug";
 import { EntryCollection } from "contentful";
+import TableOfContent from "@/components/TableOfContent";
 
 type PropType = { readNextPosts: BlogsType; data: Item; content: any };
 
 const PostContent = ({ readNextPosts, data, content }: PropType) => {
   const router = useRouter();
+  const postSlug = router.query.post as string;
 
   const newDate = new Date(data.sys.createdAt);
   const postDate = `${newDate.getDate()} ${newDate.toLocaleString("default", {
@@ -45,10 +47,10 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
       {/* <div dangerouslySetInnerHTML={{ __html: content }}></div> */}
       <PostPageLayout
         readNextPosts={readNextPosts}
-        postSlug={router.query.post as string}
+        postSlug={postSlug}
         tableOfContent={headings}
       >
-        <article className="prose-base prose-li:list-disc prose-li:marker:text-brand prose-blockquote:rounded-lg prose-blockquote:px-5 prose-strong:text-white/70 prose-code:!font-code prose-pre:!bg-black prose-pre:p-0 prose-pre:m-0 prose-blockquote:py-0.5 prose-blockquote:border prose-blockquote:border-solid prose-blockquote:border-white/10 prose-blockquote:text-white/60 mx-auto prose-headings:text-white/80 prose-headings:font-semibold  prose-a:no-underline prose-a:border-b prose-a:pb-0.5 prose-a:border-dashed prose-a:border-brand/70 hover:prose-a:border-solid hover:prose-a:border-brand prose-p:font-normal prose-a:text-white/60 hover:prose-a:text-white prose-a:mx-1 text-white/50">
+        <>
           <Image
             src={"https://" + data.fields.image.fields.file.url}
             quality={50}
@@ -57,37 +59,44 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
             alt={data.fields.title}
             className="rounded-lg"
           />
-          <h1 className="text-3xl sm:text-4xl !text-brand my-2">
-            {data.fields.title}
-          </h1>
-          <p className="flex gap-4 text-white/70">
-            <span className="flex gap-2 items-center">
-              <RiCalendarCheckLine size={18} /> {postDate}
-            </span>
-            |
-            <span className="flex gap-2 items-center">
-              <AiOutlineFieldTime size={20} />{" "}
-              {readingTime(content.toString()).text}
-            </span>
-          </p>
-          <ReactMarkdown
-            components={{
-              // quote: quoteBlock,
-              blockquote: blockQuote,
-              img: image,
-              code: code,
-              h1: h1,
-              h2: h2,
-              h3: h3,
-              h4: h4,
-              h5: h5,
-              hr: hr,
-              a: link,
-            }}
-          >
-            {content}
-          </ReactMarkdown>
-        </article>
+          <div className="flex flex-col gap-4 my-8">
+            <h1 className="text-3xl sm:text-4xl !text-brand">
+              {data.fields.title}
+            </h1>
+            <p className="flex gap-4 text-white/70">
+              <span className="flex gap-2 items-center">
+                <RiCalendarCheckLine size={18} /> {postDate}
+              </span>
+              |
+              <span className="flex gap-2 items-center">
+                <AiOutlineFieldTime size={20} />{" "}
+                {readingTime(content.toString()).text}
+              </span>
+            </p>
+            <div className="my-3 md:my-5 block md:hidden">
+              <TableOfContent tableOfContent={headings} postSlug={postSlug} />
+            </div>
+          </div>
+          <article className="prose-base prose-p:font-normal prose-li:list-disc prose-li:marker:text-brand prose-blockquote:rounded-lg prose-blockquote:px-5 prose-strong:text-white/70 prose-code:!font-code prose-pre:!bg-black prose-pre:p-0 prose-pre:m-0 prose-blockquote:py-0.5 prose-blockquote:border prose-blockquote:border-solid prose-blockquote:border-white/10 prose-blockquote:text-white/60 mx-auto prose-headings:text-white/80 prose-headings:font-semibold  prose-a:no-underline prose-a:border-b prose-a:pb-0.5 prose-a:border-dashed prose-a:border-brand/70 hover:prose-a:border-solid hover:prose-a:border-brand prose-a:text-white/60 hover:prose-a:text-white prose-a:mx-1 text-white/50">
+            <ReactMarkdown
+              components={{
+                // quote: quoteBlock,
+                blockquote: blockQuote,
+                img: image,
+                code: code,
+                h1: h1,
+                h2: h2,
+                h3: h3,
+                h4: h4,
+                h5: h5,
+                hr: hr,
+                a: link,
+              }}
+            >
+              {content}
+            </ReactMarkdown>
+          </article>
+        </>
       </PostPageLayout>
     </>
   );

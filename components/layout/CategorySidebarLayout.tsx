@@ -17,7 +17,7 @@ const CategorySidebarLayout = ({ categories, children }: PropType) => {
           {/* <div className="bg-black z-20 sticky top-0 py-2 border-b border-solid border-white/10">
             <Months />
           </div> */}
-          <div className="md:p-5">{children}</div>
+          <div className="py-5 md:p-5">{children}</div>
         </div>
       </div>
     </>

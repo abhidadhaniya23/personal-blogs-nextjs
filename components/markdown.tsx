@@ -75,22 +75,25 @@ const blockQuote = (props: any) => {
           color={types.tip.color}
           bqClasses={blockQuoteClasses(types.tip.color)}
           icon={types.tip.icon}
-          children={props.children}
-        />
+        >
+          {props.children}
+        </BlockQuoteComponent>
       ) : isWarning ? (
         <BlockQuoteComponent
           color={types.warning.color}
           bqClasses={blockQuoteClasses(types.warning.color)}
           icon={types.warning.icon}
-          children={props.children}
-        />
+        >
+          {props.children}
+        </BlockQuoteComponent>
       ) : isNote ? (
         <BlockQuoteComponent
           color={types.note.color}
           bqClasses={blockQuoteClasses(types.note.color)}
           icon={types.note.icon}
-          children={props.children}
-        />
+        >
+          {props.children}
+        </BlockQuoteComponent>
       ) : (
         <blockquote>{props.children}</blockquote>
       )}
