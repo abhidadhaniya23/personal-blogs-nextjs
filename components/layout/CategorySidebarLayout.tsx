@@ -9,7 +9,7 @@ type PropType = {
 const CategorySidebarLayout = ({ categories, children }: PropType) => {
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-10">
+      <div className="grid grid-cols-1 md:grid-cols-10 border-b border-solid border-white/10">
         <div className="col-span-2">
           <Category categories={categories} />
         </div>

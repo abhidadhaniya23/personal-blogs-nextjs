@@ -23,6 +23,7 @@ import readingTime from "reading-time";
 import { getPostBySlug } from "@/contentful/getPostBySlug";
 import { EntryCollection } from "contentful";
 import TableOfContent from "@/components/TableOfContent";
+import ReadNext from "@/components/ReadNext";
 
 type PropType = { readNextPosts: BlogsType; data: Item; content: any };
 
@@ -41,6 +42,10 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
     const link = text.replace(/ /g, "-").toLowerCase();
     return { text, link };
   });
+  const readNext = readNextPosts.items
+    .filter((post) => post.fields.slug !== postSlug)
+    .slice(0, 3);
+
   return (
     <>
       {/* <PortableText value={content} /> */}
@@ -96,6 +101,9 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
               {content}
             </ReactMarkdown>
           </article>
+          <div className="my-7 md:my-5 block md:hidden">
+            <ReadNext readNextPosts={readNext} />
+          </div>
         </>
       </PostPageLayout>
     </>

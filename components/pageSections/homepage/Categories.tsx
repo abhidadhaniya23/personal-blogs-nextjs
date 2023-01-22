@@ -12,13 +12,13 @@ const Category = ({ categories }: { categories: CategoryType }) => {
 
   return (
     <>
-      <div className="flex flex-col md:sticky top-16">
+      <div className="flex flex-col md:sticky top-0">
         <nav
-          className="w-full mx-auto sm:flex sm:items-center sm:justify-between"
+          className="w-full mx-auto md:flex md:items-center md:justify-between"
           aria-label="Global"
         >
           <div
-            className="sm:hidden flex items-center justify-between py-3 border-b border-solid border-white/10"
+            className="md:hidden flex items-center justify-between py-3 border-b border-solid border-white/10"
             data-hs-collapse="#navbar-secondary"
             aria-controls="navbar-secondary"
             aria-label="Toggle navigation"
@@ -39,9 +39,9 @@ const Category = ({ categories }: { categories: CategoryType }) => {
           </div>
           <div
             id="navbar-secondary"
-            className="hs-collapse overflow-hidden transition-all duration-300 basis-full grow sm:block"
+            className="hs-collapse hidden overflow-hidden transition-all duration-300 grow md:block"
           >
-            <ul className="pr-2 py-2 text-white/60">
+            <ul className="flex flex-col gap-1 pr-2 py-2 text-white/60">
               {categories.items.map((category: CategoryItem) => (
                 <Link
                   href={`/tag/${category.fields.slug}`}

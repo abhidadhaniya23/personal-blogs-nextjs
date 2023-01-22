@@ -16,7 +16,13 @@ const category = ({ blogPosts, categories }: PropsType) => {
   return (
     <>
       <CategorySidebarLayout categories={categories}>
-        <BlogPosts blogPosts={blogPosts} />
+        <>
+          <h1 className="text-2xl mb-5">
+            {categories.items[0].fields.name} Category : {blogPosts.length}{" "}
+            posts
+          </h1>
+          <BlogPosts blogPosts={blogPosts} />
+        </>
       </CategorySidebarLayout>
     </>
   );

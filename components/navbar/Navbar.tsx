@@ -8,21 +8,21 @@ const Navbar = () => {
       link: "https://abhidadhaniya.com/",
     },
     {
-      label: "Contact",
-      link: "https://abhidadhaniya.com/contact",
+      label: "Products",
+      link: "https://abhidadhaniya.com/work",
     },
     {
       label: "Gigaweb",
       link: "https://abhidadhaniya.com/gigaweb",
     },
     {
-      label: "Products",
-      link: "https://abhidadhaniya.com/work",
+      label: "Contact",
+      link: "https://abhidadhaniya.com/contact",
     },
   ];
   return (
     <>
-      <header className="sticky top-0 bg-black flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm py-4 border-b border-solid border-white/10">
+      <header className="bg-black flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm py-4 border-b border-solid border-white/10">
         <nav
           className="w-full mx-auto sm:flex sm:items-center sm:justify-between"
           aria-label="Global"

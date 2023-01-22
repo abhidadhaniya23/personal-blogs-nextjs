@@ -104,25 +104,23 @@ const blockQuote = (props: any) => {
 const image = (props: any) => {
   const { src, alt, title } = props;
   return (
-    <Image
+    <img
       draggable={false}
       src={src}
       alt={alt}
       title={title}
-      width={640}
       className="rounded-lg"
-      height={500}
     />
   );
 };
 
 const code = (props: any) => {
-  const match = /language-(\w+)/.exec(props.className || "");
   const { children, className, inline } = props;
+  const match = /language-(\w+)/.exec(className || "");
   const language = className?.replace(/language-/, "");
-  return !inline && match ? (
+  return !inline ? (
     <SyntaxHighlighter
-      language={language}
+      language={!language || !match ? "bash" : language}
       className="hide-scrollbar !bg-black border border-solid border-white/10 rounded-lg"
       style={nightOwl}
       PreTag={"div"}

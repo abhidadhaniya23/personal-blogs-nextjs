@@ -24,7 +24,13 @@ export default function Home({ recentBlogs, categories }: PropsType) {
       </Head>
 
       <CategorySidebarLayout categories={categories}>
-        <BlogPosts blogPosts={recentBlogs.items} />
+        <>
+          <h1 className="text-2xl mb-5">
+            {" "}
+            Recently Posted : {recentBlogs.total} Posts
+          </h1>
+          <BlogPosts blogPosts={recentBlogs.items} />
+        </>
       </CategorySidebarLayout>
     </>
   );
