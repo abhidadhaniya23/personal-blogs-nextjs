@@ -10,7 +10,7 @@ const NewsLetter = () => {
           <h2 className="text-3xl md:text-4xl text-center">
             Get the latest updates
           </h2>
-          <p className="text-white/50 text-lg text-center md:px-10 px-5">
+          <p className="text-white/50 text-lg text-center md:px-10">
             Subscribe to our newsletter to get weekly updates about
             technologies.
           </p>

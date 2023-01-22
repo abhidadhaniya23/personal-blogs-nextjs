@@ -10,7 +10,7 @@ const Gigaweb = () => {
             <h2 className="text-3xl md:text-4xl text-center">
               Want to build brand website?
             </h2>
-            <p className="text-white/50 text-lg text-center md:px-20 px-5">
+            <p className="text-white/50 text-lg text-center md:px-20">
               We are a team of experienced developers who can build your brand
               website.
             </p>
