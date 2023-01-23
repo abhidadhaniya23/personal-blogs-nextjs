@@ -7,6 +7,7 @@ import { BlogsType, Entry, Item } from "@/types/blogs";
 import { CategoryItem } from "@/types/category";
 import { CategoryType } from "@/types/category";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/router";
 
 type PropsType = {
   blogPosts: Item[];
@@ -14,14 +15,18 @@ type PropsType = {
 };
 
 const category = ({ blogPosts, categories }: PropsType) => {
+  const router = useRouter();
+  const { tag }: any = router.query;
+  const categoryLabel = categories.items.filter(
+    (categoryItem: CategoryItem) => categoryItem.fields.slug === tag
+  )[0].fields.name;
   return (
     <>
-      <SocialMetaData title={categories.items[0].fields.name} pageType="tag" />
+      <SocialMetaData title={categoryLabel} pageType="tag" />
       <CategorySidebarLayout categories={categories}>
         <>
           <h2 className="text-2xl mb-5">
-            {categories.items[0].fields.name} Category : {blogPosts.length}{" "}
-            posts
+            {categoryLabel} Category : {blogPosts.length} posts
           </h2>
           <BlogPosts blogPosts={blogPosts} />
         </>
