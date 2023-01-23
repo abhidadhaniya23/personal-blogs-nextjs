@@ -124,7 +124,7 @@ const LinksComponent = ({
           {heading}
         </h3>
         <hr className="border-white/10" />
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 pl-2">
           {(productLinks || socialLinks || blogLinks)?.map(
             (link: LinksProps) => (
               <a

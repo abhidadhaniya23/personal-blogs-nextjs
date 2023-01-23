@@ -2,7 +2,7 @@ import getBlogs from "@/contentful/blogs";
 import getCategories from "@/contentful/categories";
 import { CategoryType } from "@/types/category";
 import { BlogsType } from "@/types/blogs";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import BlogPosts from "@/components/BlogPosts";
 import CategorySidebarLayout from "@/components/layout/CategorySidebarLayout";
 import HeroSection from "@/components/HeroSection";
@@ -40,7 +40,7 @@ export default function Home({ recentBlogs, categories }: PropsType) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const recentBlogs = await getBlogs();
   const categories = await getCategories();
   return {

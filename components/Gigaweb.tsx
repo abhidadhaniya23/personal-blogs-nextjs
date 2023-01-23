@@ -1,5 +1,6 @@
 import { gigawebUrl } from "@/utils/urls";
 import { AiOutlineRight } from "react-icons/ai";
+import LinkButton from "./buttons/LinkButton";
 
 const Gigaweb = () => {
   return (
@@ -10,18 +11,15 @@ const Gigaweb = () => {
             <h2 className="text-3xl md:text-4xl text-center">
               Want to build brand website?
             </h2>
-            <p className="text-white/50 text-lg text-center md:px-20">
+            <p className="text-white/50 text-lg text-center md:px-20 mb-3">
               We are a team of experienced developers who can build your brand
               website.
             </p>
-            <a
-              href={gigawebUrl}
-              target={"_blank"}
-              rel="noreferrer"
-              className="btn mt-2 flex flex-row justify-center items-center gap-2"
-            >
-              Learn More <AiOutlineRight />
-            </a>
+            <LinkButton external link={gigawebUrl}>
+              <div className="flex flex-row items-center gap-2">
+                Learn More <AiOutlineRight />
+              </div>
+            </LinkButton>
           </div>
         </div>
       </div>
