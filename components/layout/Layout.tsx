@@ -4,13 +4,18 @@ import Head from "next/head";
 import TrendingPosts from "../TrendingPosts";
 import Footer from "../Footer";
 import Gigaweb from "../Gigaweb";
+import SocialMetaData from "../metadata/SocialMetaData";
+import { metaDescription, siteImage, siteUrl, title } from "@/utils/metaData";
 
 const Layout = ({ children }: { children: JSX.Element }) => {
   return (
     <>
-      <Head>
-        <meta name="theme-color" content="#000" />
-      </Head>
+      <SocialMetaData
+        title={title}
+        description={metaDescription}
+        image={siteImage}
+        url={siteUrl}
+      />
       <div className="text-white lg:px-10 px-5 max-w-6xl mx-auto">
         <Navbar />
         {children}

@@ -120,9 +120,9 @@ const LinksComponent = ({
   return (
     <>
       <div className="col-span-1 flex flex-col border border-solid border-white/10 gap-4 p-5 rounded-lg">
-        <h4 className="text-xl md:text-2xl font-normal text-brand">
+        <h3 className="text-xl md:text-2xl font-normal text-brand">
           {heading}
-        </h4>
+        </h3>
         <hr className="border-white/10" />
         <div className="flex flex-col gap-2">
           {(productLinks || socialLinks || blogLinks)?.map(

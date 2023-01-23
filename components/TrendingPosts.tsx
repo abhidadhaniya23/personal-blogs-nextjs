@@ -12,10 +12,10 @@ const TrendingPosts = () => {
   return (
     <>
       <div className="py-10 md:py-14 flex flex-col gap-5">
-        <h1 className="text-3xl flex flex-row items-center gap-3">
+        <h2 className="text-3xl flex flex-row items-center gap-3">
           <MdTrendingUp />
           Trending Posts
-        </h1>
+        </h2>
         <BlogPosts cols={3} blogPosts={data?.items} />
       </div>
     </>

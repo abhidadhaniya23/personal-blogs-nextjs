@@ -1,5 +1,6 @@
 import BlogPosts from "@/components/BlogPosts";
 import CategorySidebarLayout from "@/components/layout/CategorySidebarLayout";
+import SocialMetaData from "@/components/metadata/SocialMetaData";
 import getBlogs from "@/contentful/blogs";
 import getCategories from "@/contentful/categories";
 import { BlogsType, Entry, Item } from "@/types/blogs";
@@ -15,12 +16,13 @@ type PropsType = {
 const category = ({ blogPosts, categories }: PropsType) => {
   return (
     <>
+      <SocialMetaData title={categories.items[0].fields.name} pageType="tag" />
       <CategorySidebarLayout categories={categories}>
         <>
-          <h1 className="text-2xl mb-5">
+          <h2 className="text-2xl mb-5">
             {categories.items[0].fields.name} Category : {blogPosts.length}{" "}
             posts
-          </h1>
+          </h2>
           <BlogPosts blogPosts={blogPosts} />
         </>
       </CategorySidebarLayout>

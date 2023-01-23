@@ -23,6 +23,7 @@ import { getPostBySlug } from "@/contentful/getPostBySlug";
 import { EntryCollection } from "contentful";
 import TableOfContent from "@/components/TableOfContent";
 import ReadNext from "@/components/ReadNext";
+import SocialMetaData from "@/components/metadata/SocialMetaData";
 
 type PropType = { readNextPosts: BlogsType; data: Item; content: any };
 
@@ -49,6 +50,15 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
     <>
       {/* <PortableText value={content} /> */}
       {/* <div dangerouslySetInnerHTML={{ __html: content }}></div> */}
+
+      <SocialMetaData
+        title={data.fields.title}
+        description={data.fields.description}
+        image={"https://" + data.fields.image.fields.file.url}
+        pageType="post"
+        url={`https://blogs.abhidadhaniya.com/post/${data.fields.slug}`}
+      />
+
       <PostPageLayout
         readNextPosts={readNextPosts}
         postSlug={postSlug}
