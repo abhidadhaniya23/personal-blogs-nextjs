@@ -19,7 +19,7 @@ const LinkButton = ({ children, link, external }: PropsType) => {
           {children}
         </a>
       ) : (
-        <Link href={link} className={`btn w-64 text-center items-center`}>
+        <Link href={link} className={`btn w-52 text-center items-center`}>
           {children}
         </Link>
       )}
