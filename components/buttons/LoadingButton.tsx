@@ -19,9 +19,9 @@ const LoadingButton = ({
     <>
       <button
         type="submit"
-        className={`btn items-center ${loading ? "!cursor-not-allowed" : ""} ${
-          fullWidth ? "w-full md:w-auto" : "w-36"
-        }`}
+        className={`btn md:min-w-[8rem] items-center ${
+          loading ? "!cursor-not-allowed" : ""
+        } ${fullWidth ? "w-full md:w-auto" : "w-36"}`}
         onClick={onClick}
         disabled={disable}
       >
