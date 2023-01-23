@@ -1,7 +1,7 @@
 import PostPageLayout from "@/components/layout/PostPageLayout";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getBlogs } from "@/contentful/blogs";
-import { BlogsType, Item } from "@/types/blogs";
+import { BlogsType, Entry, Item } from "@/types/blogs";
 import ReactMarkdown from "react-markdown";
 import {
   blockQuote,
@@ -24,6 +24,7 @@ import { EntryCollection } from "contentful";
 import TableOfContent from "@/components/TableOfContent";
 import ReadNext from "@/components/ReadNext";
 import SocialMetaData from "@/components/metadata/SocialMetaData";
+import Link from "next/link";
 
 type PropType = { readNextPosts: BlogsType; data: Item; content: any };
 
@@ -87,6 +88,18 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
                 {readingTime(content.toString()).text}
               </span>
             </p>
+
+            <div className="flex flex-row gap-2 flex-wrap mt-1">
+              {data.fields.category.map((category: Entry) => (
+                <Link
+                  href={`/tag/${category.fields.slug}`}
+                  key={category.sys.id}
+                  className={`text-sm hover:bg-${category.fields.colors}-500/20 border-[1.2px] border-solid border-${category.fields.colors}-500/40 text-${category.fields.colors}-500 px-2.5 py-1 rounded-full`}
+                >
+                  {category.fields.name}
+                </Link>
+              ))}
+            </div>
             <div className="my-3 md:my-5 block md:hidden">
               <TableOfContent tableOfContent={headings} postSlug={postSlug} />
             </div>
