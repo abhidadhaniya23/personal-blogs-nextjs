@@ -16,7 +16,6 @@ import {
   link,
 } from "@/components/markdown";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import { RiCalendarCheckLine } from "react-icons/ri";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import readingTime from "reading-time";
@@ -56,16 +55,16 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
         tableOfContent={headings}
       >
         <>
-          <Image
+          <img
             src={"https://" + data.fields.image.fields.file.url}
-            quality={50}
+            // quality={50}
             width={640}
             height={300}
             alt={data.fields.title}
             className="rounded-lg"
           />
           <div className="flex flex-col gap-4 my-8">
-            <h1 className="text-3xl sm:text-4xl !text-brand">
+            <h1 className="text-3xl sm:text-4xl !text-brand/90">
               {data.fields.title}
             </h1>
             <p className="flex gap-4 text-white/70">
@@ -82,7 +81,7 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
               <TableOfContent tableOfContent={headings} postSlug={postSlug} />
             </div>
           </div>
-          <article className="prose-base prose-p:font-normal prose-li:list-disc prose-li:marker:text-brand prose-blockquote:rounded-lg prose-blockquote:px-5 prose-strong:text-white/70 prose-code:!font-code prose-pre:!bg-black prose-pre:p-0 prose-pre:m-0 prose-blockquote:py-0.5 prose-blockquote:border prose-blockquote:border-solid prose-blockquote:border-white/10 prose-blockquote:text-white/60 mx-auto prose-headings:text-white/80 prose-headings:font-semibold  prose-a:no-underline prose-a:border-b prose-a:pb-0.5 prose-a:border-dashed prose-a:border-brand/70 hover:prose-a:border-solid hover:prose-a:border-brand prose-a:text-white/60 hover:prose-a:text-white prose-a:mx-1 text-white/50">
+          <article className="prose-base prose-p:font-normal prose-li:list-disc prose-li:marker:text-brand prose-blockquote:rounded-lg prose-blockquote:px-5 prose-strong:text-white/70 prose-code:!font-code prose-pre:!bg-black prose-pre:p-0 prose-pre:m-0 prose-blockquote:py-0.5 prose-blockquote:border prose-blockquote:border-solid prose-blockquote:border-white/10 prose-blockquote:text-white/60 mx-auto prose-headings:text-white/70 prose-headings:font-semibold  prose-a:no-underline prose-a:border-b prose-a:pb-0.5 prose-a:border-dashed prose-a:border-brand/70 hover:prose-a:border-solid hover:prose-a:border-brand prose-a:text-white/60 hover:prose-a:text-white prose-a:mx-1 text-white/50">
             <ReactMarkdown
               components={{
                 // quote: quoteBlock,

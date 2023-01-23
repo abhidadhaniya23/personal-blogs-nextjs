@@ -1,4 +1,3 @@
-import Image from "next/image";
 import InputComponent from "./input/InputComponent";
 
 const HeroSection = () => {

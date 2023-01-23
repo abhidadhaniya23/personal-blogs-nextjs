@@ -1,14 +1,23 @@
 import { CategoryType, CategoryItem } from "@/types/category";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
 const Category = ({ categories }: { categories: CategoryType }) => {
+  const [isCollapsed, setIsCollapsed] = useState<Boolean>(false);
   const router = useRouter();
   const isSlugMatched = (slug: string) => {
     router.pathname.includes("tag/[tag]");
     return router.query.tag === slug ? true : false;
   };
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      document.getElementById("navbar-secondary")?.classList.contains("open")
+        ? setIsCollapsed(true)
+        : setIsCollapsed(false);
+    }
+  }, []);
 
   return (
     <>
@@ -22,6 +31,7 @@ const Category = ({ categories }: { categories: CategoryType }) => {
             data-hs-collapse="#navbar-secondary"
             aria-controls="navbar-secondary"
             aria-label="Toggle navigation"
+            onClick={() => setIsCollapsed(!isCollapsed)}
           >
             <p className="text-lg font-medium text-white/70">Categories</p>
             <button
@@ -33,7 +43,10 @@ const Category = ({ categories }: { categories: CategoryType }) => {
             >
               <BsChevronDown
                 size={20}
-                className="text-white/80 focus:text-brand/90"
+                // className={`text-white/80 focus:text-brand/90`}
+                className={`text-white/80 focus:text-brand/90 ${
+                  isCollapsed ? "transform rotate-180" : "rotate-0"
+                }`}
               />
             </button>
           </div>

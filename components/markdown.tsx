@@ -5,7 +5,6 @@ import { RxPencil2 } from "react-icons/rx";
 
 import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import Image from "next/image";
 
 const link = (props: any) => {
   const { href, children }: { href: string; children: JSX.Element } = props;
@@ -121,7 +120,7 @@ const code = (props: any) => {
   return !inline ? (
     <SyntaxHighlighter
       language={!language || !match ? "bash" : language}
-      className="hide-scrollbar !bg-black border border-solid border-white/10 rounded-lg"
+      className="hide-scrollbar !bg-black border border-solid opacity-90 border-white/10 rounded-lg"
       style={nightOwl}
       PreTag={"div"}
     >

@@ -1,5 +1,6 @@
 import { CategoryType } from "@/types/category";
 import Category from "../pageSections/homepage/Categories";
+import Months from "../pageSections/homepage/Months";
 
 type PropType = {
   categories: CategoryType;

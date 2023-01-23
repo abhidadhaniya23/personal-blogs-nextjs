@@ -11,7 +11,7 @@ const ReadNext = ({ readNextPosts }: PropsType) => {
   return (
     <>
       <div className="rounded-lg px-5 py-3 border border-white/10 border-solid">
-        <h1 className="text-brand pb-3 text-2xl font-medium border-b border-white/10 border-solid">
+        <h1 className="text-brand/80 pb-3 text-2xl font-medium border-b border-white/10 border-solid">
           Read Next
         </h1>
         <div className="grid grid-flow-row mt-3 gap-2 text-white/60">

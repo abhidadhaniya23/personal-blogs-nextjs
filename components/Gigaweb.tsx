@@ -4,7 +4,7 @@ import { AiOutlineRight } from "react-icons/ai";
 const Gigaweb = () => {
   return (
     <>
-      <div className="py-16">
+      <div className="pt-10 pb-20">
         <div className="flex flex-col justify-center items-center gap-7">
           <div className="flex items-center flex-col gap-2 md:w-1/2">
             <h2 className="text-3xl md:text-4xl text-center">

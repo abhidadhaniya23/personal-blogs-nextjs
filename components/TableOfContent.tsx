@@ -9,7 +9,7 @@ const TableOfContent = ({ tableOfContent, postSlug }: PropsType) => {
   return (
     <>
       <div className="rounded-lg prose-li:my-0 px-5 py-3 border border-white/10 border-solid">
-        <h1 className="text-brand pb-3 text-2xl font-medium border-b border-white/10 border-solid">
+        <h1 className="text-brand/80 pb-3 text-2xl font-medium border-b border-white/10 border-solid">
           Table of Contents
         </h1>
         {tableOfContent.length > 0 && (
