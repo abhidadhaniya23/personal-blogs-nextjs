@@ -40,7 +40,7 @@ const BlockQuoteComponent = ({ bqClasses, icon, children, color }: any) => (
 const blockQuote = (props: any) => {
   const iconSize = 18;
   const blockQuoteClasses = (color: string) =>
-    `mt-5 border border-solid border-${color}-500/50 rounded-lg prose-p:!pr-2 flex flex-row prose-p:!my-0 py-2 items-start gap-2`;
+    `mt-5 border-solid bg-${color}-500/10 border-${color}-500/50 rounded-lg prose-p:!pr-2 flex flex-row prose-p:!my-0 py-2 items-start gap-2`;
   const types = {
     warning: {
       slug: "warning",

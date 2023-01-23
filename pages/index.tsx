@@ -7,6 +7,7 @@ import Head from "next/head";
 import BlogPosts from "@/components/BlogPosts";
 import CategorySidebarLayout from "@/components/layout/CategorySidebarLayout";
 import HeroSection from "@/components/HeroSection";
+import { RiNewspaperLine } from "react-icons/ri";
 
 type PropsType = {
   recentBlogs: BlogsType;
@@ -28,7 +29,9 @@ export default function Home({ recentBlogs, categories }: PropsType) {
       <hr className="border-white/10" />
       <CategorySidebarLayout categories={categories}>
         <>
-          <h1 className="text-2xl mb-5"> Recently Posted</h1>
+          <h1 className="text-3xl mb-5 flex flex-row gap-2 items-center text-white/90">
+            <RiNewspaperLine /> Recently Posted
+          </h1>
           <BlogPosts blogPosts={recentBlogs.items} />
         </>
       </CategorySidebarLayout>

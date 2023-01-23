@@ -68,7 +68,7 @@ const Footer = () => {
     <>
       <footer className="py-10 grid grid-cols-1 sm:grid-cols-2 justify-center md:grid-cols-4 gap-5">
         <div className="col-span-1 flex flex-col gap-4 rounded-lg border border-white/10 p-5">
-          <h4 className="text-2xl font-normal text-brand">About Author</h4>
+          <h4 className="text-2xl font-normal text-brand">Author</h4>
           <hr className="border-white/10" />
           <div className="flex flex-col gap-2">
             <h4 className="text-lg">Abhi Dadhaniya</h4>
