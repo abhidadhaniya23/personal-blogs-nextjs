@@ -14,7 +14,7 @@ type PropsType = {
   categories: CategoryType;
 };
 
-const category = ({ blogPosts, categories }: PropsType) => {
+const Category = ({ blogPosts, categories }: PropsType) => {
   const router = useRouter();
   const { tag }: any = router.query;
   const categoryLabel = categories.items.filter(
@@ -64,4 +64,4 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   };
 };
 
-export default category;
+export default Category;
