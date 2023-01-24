@@ -149,6 +149,13 @@ export const getServerSideProps: GetServerSideProps = async ({
   const res: EntryCollection<BlogsType> =
     (await getBlogs()) as EntryCollection<BlogsType>;
   const data: BlogsType = await getPostBySlug(params.post);
+
+  if (data.items.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
+
   const content = data.items[0].fields.body;
   return {
     props: {

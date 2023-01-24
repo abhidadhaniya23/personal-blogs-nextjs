@@ -57,15 +57,13 @@ export const getServerSideProps: GetServerSideProps = async ({
   const res: any = await getBlogs();
   const categoriesData: any = await getCategories();
 
-  const filteredPosts: BlogsType = res.items.filter((blog: Item) =>
+  const filteredPosts: Item[] = res.items.filter((blog: Item) =>
     blog.fields.category.some(
       (category: Entry) => category.fields.slug === params.tag
     )
   );
 
-  // console.log(categoriesData);
-
-  if (!filteredPosts.items) {
+  if (filteredPosts.length === 0) {
     return {
       notFound: true,
     };
