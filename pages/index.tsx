@@ -16,7 +16,7 @@ type PropsType = {
 };
 
 export default function Home({ recentBlogs, categories }: PropsType) {
-  // console.log(JSON.stringify(categories));
+  // console.log(categories);
   return (
     <>
       <SocialMetaData

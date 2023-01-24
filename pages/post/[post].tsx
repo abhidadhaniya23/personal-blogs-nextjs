@@ -1,5 +1,5 @@
 import PostPageLayout from "@/components/layout/PostPageLayout";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { getBlogs } from "@/contentful/blogs";
 import { BlogsType, Entry, Item } from "@/types/blogs";
 import ReactMarkdown from "react-markdown";
@@ -66,14 +66,16 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
         tableOfContent={headings}
       >
         <>
-          <img
-            src={"https://" + data.fields.image.fields.file.url}
-            // quality={50}
-            width={640}
-            height={300}
-            alt={data.fields.title}
-            className="rounded-lg"
-          />
+          <div className="p-5 border border-solid border-white/10 rounded-lg">
+            <img
+              src={"https://" + data.fields.image.fields.file.url}
+              // quality={50}
+              width={640}
+              height={300}
+              alt={data.fields.title}
+              className="rounded-lg"
+            />
+          </div>
           <div className="flex flex-col gap-4 my-8">
             <h1 className="text-3xl sm:text-4xl !text-brand/90">
               {data.fields.title}

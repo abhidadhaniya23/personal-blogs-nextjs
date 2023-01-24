@@ -6,7 +6,7 @@ import getCategories from "@/contentful/categories";
 import { BlogsType, Entry, Item } from "@/types/blogs";
 import { CategoryItem } from "@/types/category";
 import { CategoryType } from "@/types/category";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 
 type PropsType = {
@@ -20,6 +20,7 @@ const Category = ({ blogPosts, categories }: PropsType) => {
   const categoryLabel = categories.items.filter(
     (categoryItem: CategoryItem) => categoryItem.fields.slug === tag
   )[0].fields.name;
+
   return (
     <>
       <SocialMetaData title={categoryLabel} pageType="tag" />
@@ -61,6 +62,15 @@ export const getServerSideProps: GetServerSideProps = async ({
       (category: Entry) => category.fields.slug === params.tag
     )
   );
+
+  // console.log(categoriesData);
+
+  if (!filteredPosts.items) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: { blogPosts: filteredPosts, categories: categoriesData },
     // revalidate: 3600,
