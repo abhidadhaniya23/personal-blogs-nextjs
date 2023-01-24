@@ -1,9 +1,9 @@
 // [x] custom 404 page
-// [ ] meta data
-// [ ] google analytics
+// [x] meta data
 // [x] image is not loading in [post] page
-// [ ] remaining work in hero section
+// [x] remaining work in hero section
+// [x] fix footer links and replace with new ones
 // [ ] pagination
-// [ ] fix footer links and replace with new ones
+// [ ] google analytics
 
 export default "hello world";

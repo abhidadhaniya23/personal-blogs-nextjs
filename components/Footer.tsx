@@ -50,7 +50,7 @@ const Footer = () => {
     {
       label: "Medium",
       icon: <SiMedium className={iconStyle} />,
-      link: "https://medium.com/@abhidadhaniya23",
+      link: "https://abhidadhaniya.medium.com/",
     },
     {
       label: "Dev.to",
