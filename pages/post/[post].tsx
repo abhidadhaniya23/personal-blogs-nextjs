@@ -37,7 +37,7 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
     month: "long",
   })}, ${newDate.getFullYear()}`;
 
-  const regXHeader = /#{1,6}.+/g;
+  const regXHeader = /# {1,6}.+/g;
   const headings = content.match(regXHeader)?.map((heading: any) => {
     const text = heading.replace(/#{1,6}/, "").slice(1);
     const link = text.replace(/ /g, "-").toLowerCase();
