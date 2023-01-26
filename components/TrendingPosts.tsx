@@ -1,9 +1,7 @@
 import getBlogs from "@/contentful/blogs";
-import client from "@/contentful/client";
 import { MdTrendingUp } from "react-icons/md";
 import { useQuery } from "react-query";
 import BlogPosts from "./BlogPosts";
-import { BlogsType } from "@/types/blogs";
 
 const TrendingPosts = () => {
   const { isLoading, error, data }: any = useQuery("repoData", () =>
@@ -16,7 +14,7 @@ const TrendingPosts = () => {
           <MdTrendingUp />
           Trending Posts
         </h2>
-        <BlogPosts cols={3} blogPosts={data?.items} />
+        <BlogPosts cols={3} blogPosts={data?.items.slice(0, 3)} />
       </div>
     </>
   );
