@@ -19,33 +19,6 @@ const Footer = () => {
     { label: "Foodie VVN", link: "https://foodievvn.com/" },
     { label: "GigaResources", link: "https://gigaresources.xyz/" },
   ];
-  const socialLinks = [
-    {
-      label: "Instagram",
-      link: "https://www.instagram.com/_abhi_dadhaniya_/",
-      icon: <SiInstagram className={iconStyle} />,
-    },
-    {
-      label: "Twitter",
-      link: "https://twitter.com/abhidadhaniya3",
-      icon: <FiTwitter className={iconStyle} />,
-    },
-    {
-      label: "Github",
-      link: "https://github.com/abhidadhaniya23",
-      icon: <FiGithub className={iconStyle} />,
-    },
-    {
-      label: "LinkedIn",
-      link: "https://www.linkedin.com/in/abhidadhaniya/",
-      icon: <RiLinkedinLine className={iconStyle} />,
-    },
-    {
-      label: "Email",
-      link: "mailto:abhidadhaniya23@gmail.com",
-      icon: <FiMail className={iconStyle} />,
-    },
-  ];
   const blogLinks = [
     {
       label: "Medium",
@@ -86,7 +59,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <LinksComponent socialLinks={socialLinks} heading="Connect" />
+        <ConnectSocialsComponent />
         <LinksComponent productLinks={productLinks} heading="Products" />
         <LinksComponent blogLinks={blogLinks} heading="Blog Platforms" />
       </footer>
@@ -145,6 +118,41 @@ const LinksComponent = ({
           )}
         </div>
       </div>
+    </>
+  );
+};
+
+export const ConnectSocialsComponent = () => {
+  const socialLinks = [
+    {
+      label: "Instagram",
+      link: "https://www.instagram.com/_abhi_dadhaniya_/",
+      icon: <SiInstagram className={iconStyle} />,
+    },
+    {
+      label: "Twitter",
+      link: "https://twitter.com/abhidadhaniya3",
+      icon: <FiTwitter className={iconStyle} />,
+    },
+    {
+      label: "Github",
+      link: "https://github.com/abhidadhaniya23",
+      icon: <FiGithub className={iconStyle} />,
+    },
+    {
+      label: "LinkedIn",
+      link: "https://www.linkedin.com/in/abhidadhaniya/",
+      icon: <RiLinkedinLine className={iconStyle} />,
+    },
+    {
+      label: "Email",
+      link: "mailto:abhidadhaniya23@gmail.com",
+      icon: <FiMail className={iconStyle} />,
+    },
+  ];
+  return (
+    <>
+      <LinksComponent socialLinks={socialLinks} heading="Let's Connect" />
     </>
   );
 };

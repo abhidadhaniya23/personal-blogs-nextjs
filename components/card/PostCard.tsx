@@ -12,7 +12,7 @@ const PostCard = ({ postData }: { postData: Item }) => {
     <>
       <Link
         href={`/post/${postData.fields.slug}`}
-        className="rounded-lg group flex flex-col p-3 border border-solid border-white/10 hover:border-brand/40"
+        className="rounded-lg group flex flex-col p-3 border border-solid border-white/10 hover:border-brand/60"
       >
         <div className="flex flex-col items-center justify-center w-full h-56 rounded-lg">
           <div className="w-full h-full overflow-hidden rounded-md">

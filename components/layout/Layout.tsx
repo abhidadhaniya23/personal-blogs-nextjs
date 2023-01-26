@@ -6,6 +6,7 @@ import Footer from "../Footer";
 import Gigaweb from "../Gigaweb";
 import SocialMetaData from "../metadata/SocialMetaData";
 import { metaDescription, siteImage, siteUrl, title } from "@/utils/metaData";
+import Script from "next/script";
 
 const Layout = ({ children }: { children: JSX.Element }) => {
   return (
@@ -27,6 +28,22 @@ const Layout = ({ children }: { children: JSX.Element }) => {
         <LineBreak />
         <Footer />
       </div>
+
+      <Script
+        id="g_analytics_id"
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-N12HB3TGYB`}
+      />
+      <Script id="g_analytics_script" strategy="lazyOnload">
+        {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-N12HB3TGYB', {
+                    page_path: window.location.pathname,
+                    });
+                `}
+      </Script>
     </>
   );
 };

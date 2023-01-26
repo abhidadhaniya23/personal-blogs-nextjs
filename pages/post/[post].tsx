@@ -70,6 +70,7 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
             <img
               src={"https://" + data.fields.image.fields.file.url}
               // quality={50}
+              draggable={false}
               width={640}
               height={300}
               alt={data.fields.title}

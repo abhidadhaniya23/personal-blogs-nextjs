@@ -1,8 +1,7 @@
-import { BlogsType, Item } from "@/types/blogs";
-import Link from "next/link";
-import { AiOutlineDoubleRight } from "react-icons/ai";
+import { BlogsType } from "@/types/blogs";
 import TableOfContent from "../TableOfContent";
 import ReadNext from "../ReadNext";
+import { ConnectSocialsComponent } from "../Footer";
 
 type PropType = {
   children: JSX.Element;
@@ -30,6 +29,7 @@ const PostPageLayout = ({
               tableOfContent={tableOfContent}
               postSlug={postSlug}
             />
+            <ConnectSocialsComponent />
             <ReadNext readNextPosts={readNext} />
           </div>
         </div>
