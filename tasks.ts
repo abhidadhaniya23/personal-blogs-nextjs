@@ -7,5 +7,7 @@
 // [x] sort categories alphabetically
 // [x] google analytics
 // [ ] pagination
+// [ ] sitemap generation
+// [ ] google search console submission
 
 export default "hello world";

@@ -1,3 +1,4 @@
+import { UTM_PARAMS } from "@/utils/urls";
 import Link from "next/link";
 import { HiOutlineBars3CenterLeft } from "react-icons/hi2";
 
@@ -5,19 +6,19 @@ const Navbar = () => {
   const links = [
     {
       label: "About",
-      link: "https://abhidadhaniya.com/",
+      link: `https://abhidadhaniya.com${UTM_PARAMS}`,
     },
     {
       label: "Products",
-      link: "https://abhidadhaniya.com/work",
+      link: `https://abhidadhaniya.com/work${UTM_PARAMS}`,
     },
     {
       label: "Gigaweb",
-      link: "https://abhidadhaniya.com/gigaweb",
+      link: `https://gigaweb.in${UTM_PARAMS}`,
     },
     {
       label: "Contact",
-      link: "https://abhidadhaniya.com/contact",
+      link: `https://abhidadhaniya.com/contact${UTM_PARAMS}`,
     },
   ];
   return (

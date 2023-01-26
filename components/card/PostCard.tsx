@@ -15,7 +15,7 @@ const PostCard = ({ postData }: { postData: Item }) => {
         className="rounded-lg group flex flex-col p-3 border border-solid border-white/10 hover:border-brand/60"
       >
         <div className="flex flex-col items-center justify-center w-full h-56 rounded-lg">
-          <div className="w-full h-full overflow-hidden rounded-md">
+          <div className="w-full h-full overflow-hidden rounded-lg">
             <Image
               // src="https://images.unsplash.com/photo-1502989642968-94fbdc9eace4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMDY1OTc2fHxlbnwwfHx8fA%3D%3D&w=1000&q=80"
               src={"https:" + postData.fields.image.fields.file.url}
