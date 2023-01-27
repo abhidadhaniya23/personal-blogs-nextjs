@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://blogs.abhidadhaniya.com
+
+# Sitemaps
+Sitemap: https://blogs.abhidadhaniya.com/sitemap.xml
