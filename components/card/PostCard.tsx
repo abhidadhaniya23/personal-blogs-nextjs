@@ -1,13 +1,12 @@
 import { Entry, Item } from "@/types/blogs";
+import getTimeAgo from "@/utils/timeAgo";
 import Image from "next/image";
 import Link from "next/link";
 import readingTime from "reading-time";
 
 const PostCard = ({ postData }: { postData: Item }) => {
   const newDate = new Date(postData.sys.createdAt);
-  const postDate = `${newDate.getDate()} ${newDate.toLocaleString("default", {
-    month: "long",
-  })}, ${newDate.getFullYear()}`;
+  const postDate = getTimeAgo(newDate);
   return (
     <>
       <Link

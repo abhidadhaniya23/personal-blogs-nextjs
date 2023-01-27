@@ -25,6 +25,7 @@ import TableOfContent from "@/components/TableOfContent";
 import ReadNext from "@/components/ReadNext";
 import SocialMetaData from "@/components/metadata/SocialMetaData";
 import Link from "next/link";
+import getTimeAgo from "@/utils/timeAgo";
 
 type PropType = { readNextPosts: BlogsType; data: Item; content: any };
 
@@ -33,9 +34,7 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
   const postSlug = router.query.post as string;
 
   const newDate = new Date(data.sys.createdAt);
-  const postDate = `${newDate.getDate()} ${newDate.toLocaleString("default", {
-    month: "long",
-  })}, ${newDate.getFullYear()}`;
+  const postDate = getTimeAgo(newDate);
 
   const regXHeader = /# {1,6}.+/g;
   const headings = content.match(regXHeader)?.map((heading: any) => {
