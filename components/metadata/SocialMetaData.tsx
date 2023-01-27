@@ -21,6 +21,10 @@ const SocialMetaData = (props: PropsType) => {
         <meta name="theme-color" content="#000" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
+          name="google-site-verification"
+          content="VsmjAnwqQzU4V2OyZHMBAEz3_h26oLzvfFRzvMKPYbs"
+        />
+        <meta
           name="description"
           content={!description ? metaDescription : description}
         />
