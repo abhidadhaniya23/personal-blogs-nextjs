@@ -1,5 +1,5 @@
 import PostPageLayout from "@/components/layout/PostPageLayout";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { getBlogs } from "@/contentful/blogs";
 import { BlogsType, Entry, Item } from "@/types/blogs";
 import ReactMarkdown from "react-markdown";

@@ -1,18 +1,14 @@
-import getBlogs, { getPostsByPage } from "@/contentful/blogs";
+import getBlogs from "@/contentful/blogs";
 import getCategories from "@/contentful/categories";
 import { CategoryType } from "@/types/category";
 import { BlogsType } from "@/types/blogs";
-import { GetServerSideProps, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
 import BlogPosts from "@/components/BlogPosts";
 import CategorySidebarLayout from "@/components/layout/CategorySidebarLayout";
 import HeroSection from "@/components/HeroSection";
 import { RiNewspaperLine } from "react-icons/ri";
 import SocialMetaData from "@/components/metadata/SocialMetaData";
 import { metaDescription, siteImage, siteUrl, title } from "@/utils/metaData";
-import { useQuery } from "react-query";
-import LoadingButton from "@/components/buttons/LoadingButton";
-import { useEffect, useState } from "react";
-import { BsChevronDoubleDown } from "react-icons/bs";
 
 type PropsType = {
   recentBlogs: BlogsType;

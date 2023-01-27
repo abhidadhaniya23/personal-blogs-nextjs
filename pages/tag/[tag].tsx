@@ -3,10 +3,10 @@ import CategorySidebarLayout from "@/components/layout/CategorySidebarLayout";
 import SocialMetaData from "@/components/metadata/SocialMetaData";
 import getBlogs from "@/contentful/blogs";
 import getCategories from "@/contentful/categories";
-import { BlogsType, Entry, Item } from "@/types/blogs";
+import { Entry, Item } from "@/types/blogs";
 import { CategoryItem } from "@/types/category";
 import { CategoryType } from "@/types/category";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 
 type PropsType = {
@@ -71,7 +71,6 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 
   return {
     props: { blogPosts: filteredPosts, categories: categoriesData },
-    // revalidate: 3600,
   };
 };
 
