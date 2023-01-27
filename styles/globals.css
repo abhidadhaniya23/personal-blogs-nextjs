@@ -62,3 +62,14 @@ textarea {
     transform: rotate(360deg);
   }
 }
+
+/* -------- Fade Animation ----------- */
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.4s !important;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}

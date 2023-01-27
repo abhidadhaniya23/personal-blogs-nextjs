@@ -3,6 +3,7 @@ import getTimeAgo from "@/utils/timeAgo";
 import Image from "next/image";
 import Link from "next/link";
 import readingTime from "reading-time";
+// @ts-ignore
 
 const PostCard = ({ postData }: { postData: Item }) => {
   const newDate = new Date(postData.sys.createdAt);
@@ -55,5 +56,4 @@ const PostCard = ({ postData }: { postData: Item }) => {
     </>
   );
 };
-
 export default PostCard;

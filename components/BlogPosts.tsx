@@ -1,5 +1,6 @@
 import { Item } from "@/types/blogs";
 import PostCard from "./card/PostCard";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 type PropsType = {
   blogPosts: Item[];
@@ -14,9 +15,17 @@ const BlogPosts = ({ blogPosts, cols }: PropsType) => {
           cols ? `lg:grid-cols-${cols} sm:grid-cols-2` : "sm:grid-cols-2"
         }`}
       >
-        {blogPosts?.map((blog) => (
-          <PostCard key={blog.fields.slug} postData={blog} />
-        ))}
+        <TransitionGroup component={null}>
+          {blogPosts?.map((blog) => (
+            <CSSTransition
+              timeout={100}
+              classNames="fade"
+              key={blog.fields.slug}
+            >
+              <PostCard postData={blog} />
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
       </div>
     </>
   );

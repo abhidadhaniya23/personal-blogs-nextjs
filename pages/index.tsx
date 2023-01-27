@@ -30,6 +30,7 @@ export default function Home({ recentBlogs, categories }: PropsType) {
       refetchOnWindowFocus: false,
     }
   );
+  const loading = response.isLoading;
 
   useEffect(() => {
     // @ts-ignore
@@ -38,7 +39,7 @@ export default function Home({ recentBlogs, categories }: PropsType) {
     }
   }, [response?.data]);
 
-  if (response?.isLoading) {
+  if (loading) {
     return <div>Loading...</div>;
   }
   return (
@@ -67,10 +68,8 @@ export default function Home({ recentBlogs, categories }: PropsType) {
               onClick={() => {
                 response.refetch();
               }}
-              disable={
-                response?.isLoading || response?.data?.total === blogs.length
-              }
-              loading={response?.isLoading}
+              disable={loading || response?.data?.total === blogs.length}
+              loading={loading}
             >
               <div className="flex flex-row items-center gap-2">
                 Load More <BsChevronDoubleDown />
