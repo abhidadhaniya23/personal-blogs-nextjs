@@ -12,6 +12,7 @@ import { metaDescription, siteImage, siteUrl, title } from "@/utils/metaData";
 import { useQuery } from "react-query";
 import LoadingButton from "@/components/buttons/LoadingButton";
 import { useEffect, useState } from "react";
+import { BsChevronDoubleDown } from "react-icons/bs";
 
 type PropsType = {
   recentBlogs: BlogsType;
@@ -19,32 +20,23 @@ type PropsType = {
 };
 
 export default function Home({ recentBlogs, categories }: PropsType) {
-  // console.log(recentBlogs.skip + recentBlogs.limit);
-  const [page, setPage] = useState(1);
   const [blogs, setBlogs] = useState<any>(recentBlogs.items);
 
   const response = useQuery(
     "blogs",
-    () => {
-      console.log("refetching, Page: ", page);
-      return getPostsByPage(page);
-    },
+    () => getPostsByPage(blogs.length / recentBlogs.limit + 1),
     {
-      // @ts-ignore
-      mutation: true,
-      refetchOnWindowFocus: true,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
     }
   );
 
-  // const data = response.data as EntryCollection<BlogsType>;
   useEffect(() => {
-    console.log("response?.data: ", response?.data);
-    if (page > 1 && response?.data) {
-      console.log("In Condition response?.data: ", response?.data);
-      // setBlogs([...(response?.data?.items ?? [])]);
+    // @ts-ignore
+    if (response?.data?.skip >= 2) {
       setBlogs([...blogs, ...(response?.data?.items ?? [])]);
     }
-  }, [response.data]);
+  }, [response?.data]);
 
   if (response?.isLoading) {
     return <div>Loading...</div>;
@@ -68,25 +60,22 @@ export default function Home({ recentBlogs, categories }: PropsType) {
           <BlogPosts blogPosts={blogs} />
           <div
             className={`flex flex-row gap-2 justify-center items-center mt-4 ${
-              // response?.data?.skip + response?.data?.limit >=
               response?.data?.total === blogs.length ? "hidden" : "block"
             }`}
           >
             <LoadingButton
               onClick={() => {
-                if (response?.data?.total === blogs.length) {
-                  return;
-                }
-                setPage(page + 1);
-                console.log("Page: ", page);
                 response.refetch();
               }}
               disable={
                 response?.isLoading || response?.data?.total === blogs.length
               }
-              label="Load More"
               loading={response?.isLoading}
-            />
+            >
+              <div className="flex flex-row items-center gap-2">
+                Load More <BsChevronDoubleDown />
+              </div>
+            </LoadingButton>
           </div>
         </>
       </CategorySidebarLayout>

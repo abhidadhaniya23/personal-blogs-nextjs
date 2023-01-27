@@ -1,7 +1,10 @@
 import client from "./client";
 
 export const getBlogs = async () => {
-  const blogs = await client.getEntries({ content_type: "blogs" });
+  const blogs = await client.getEntries({
+    content_type: "blogs",
+    order: "-sys.createdAt",
+  });
   return blogs;
 };
 
@@ -18,6 +21,7 @@ export const getPostsByPage = async (page: number) => {
   const pageNumber = page - 1;
   const posts = await client.getEntries({
     content_type: "blogs",
+    order: "-sys.createdAt",
     skip: pageNumber * limit,
     limit: limit,
   });

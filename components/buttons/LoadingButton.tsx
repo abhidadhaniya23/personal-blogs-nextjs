@@ -1,7 +1,7 @@
 import Loader from "../Loader";
 
 type PropsType = {
-  label: string;
+  children: JSX.Element | string;
   loading: boolean;
   disable?: boolean;
   fullWidth?: boolean;
@@ -9,7 +9,7 @@ type PropsType = {
 };
 
 const LoadingButton = ({
-  label,
+  children,
   loading,
   disable,
   fullWidth,
@@ -30,7 +30,7 @@ const LoadingButton = ({
             <Loader />
           </>
         ) : (
-          <span>{label}</span>
+          <span>{children}</span>
         )}
       </button>
     </>

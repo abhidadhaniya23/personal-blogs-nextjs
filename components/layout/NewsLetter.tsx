@@ -56,7 +56,9 @@ const NewsLetter = () => {
             required={true}
             name="Emails"
           />
-          <LoadingButton fullWidth label="Subscribe" loading={loading} />
+          <LoadingButton fullWidth loading={loading}>
+            Subscribe
+          </LoadingButton>
         </form>
         {subscribed && (
           <p className="text-green-400/80 text-lg text-center md:px-10">
