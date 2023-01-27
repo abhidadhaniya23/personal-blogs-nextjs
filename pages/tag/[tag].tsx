@@ -6,7 +6,7 @@ import getCategories from "@/contentful/categories";
 import { BlogsType, Entry, Item } from "@/types/blogs";
 import { CategoryItem } from "@/types/category";
 import { CategoryType } from "@/types/category";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 
 type PropsType = {
@@ -42,18 +42,18 @@ type ParamsType = {
   };
 };
 
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const res: any = await getCategories();
-//   const paths: ParamsType[] = res.items.map((categoryItem: CategoryItem) => ({
-//     params: { tag: categoryItem.fields.slug },
-//   }));
-//   return { paths, fallback: false };
-// };
+export const getStaticPaths: GetStaticPaths = async () => {
+  const res: any = await getCategories();
+  const paths: ParamsType[] = res.items.map((categoryItem: CategoryItem) => ({
+    params: { tag: categoryItem.fields.slug },
+  }));
+  return { paths, fallback: false };
+};
 
-// export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-export const getServerSideProps: GetServerSideProps = async ({
-  params,
-}: any) => {
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
+  // export const getServerSideProps: GetServerSideProps = async ({
+  //   params,
+  // }: any) => {
   const res: any = await getBlogs();
   const categoriesData: any = await getCategories();
 

@@ -1,8 +1,8 @@
-import { getPostsByPage } from "@/contentful/blogs";
+import getBlogs, { getPostsByPage } from "@/contentful/blogs";
 import getCategories from "@/contentful/categories";
 import { CategoryType } from "@/types/category";
 import { BlogsType } from "@/types/blogs";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import BlogPosts from "@/components/BlogPosts";
 import CategorySidebarLayout from "@/components/layout/CategorySidebarLayout";
 import HeroSection from "@/components/HeroSection";
@@ -20,28 +20,6 @@ type PropsType = {
 };
 
 export default function Home({ recentBlogs, categories }: PropsType) {
-  const [blogs, setBlogs] = useState<any>(recentBlogs.items);
-
-  const response = useQuery(
-    "blogs",
-    () => getPostsByPage(blogs.length / recentBlogs.limit + 1),
-    {
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-    }
-  );
-  const loading = response.isLoading;
-
-  useEffect(() => {
-    // @ts-ignore
-    if (response?.data?.skip >= 2) {
-      setBlogs([...blogs, ...(response?.data?.items ?? [])]);
-    }
-  }, [response?.data]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
   return (
     <>
       <SocialMetaData
@@ -58,32 +36,15 @@ export default function Home({ recentBlogs, categories }: PropsType) {
           <h2 className="text-3xl mb-5 flex flex-row gap-2 items-center text-white/90">
             <RiNewspaperLine /> Recently Posted
           </h2>
-          <BlogPosts blogPosts={blogs} />
-          <div
-            className={`flex flex-row gap-2 justify-center items-center mt-4 ${
-              response?.data?.total === blogs.length ? "hidden" : "block"
-            }`}
-          >
-            <LoadingButton
-              onClick={() => {
-                response.refetch();
-              }}
-              disable={loading || response?.data?.total === blogs.length}
-              loading={loading}
-            >
-              <div className="flex flex-row items-center gap-2">
-                Load More <BsChevronDoubleDown />
-              </div>
-            </LoadingButton>
-          </div>
+          <BlogPosts blogPosts={recentBlogs.items} />
         </>
       </CategorySidebarLayout>
     </>
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const recentBlogs = await getPostsByPage(1);
+export const getStaticProps: GetStaticProps = async () => {
+  const recentBlogs = await getBlogs();
   const categories = await getCategories();
   return {
     props: {
