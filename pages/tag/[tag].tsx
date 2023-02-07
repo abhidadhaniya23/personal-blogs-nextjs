@@ -27,7 +27,7 @@ const Category = ({ blogPosts, categories }: PropsType) => {
       <CategorySidebarLayout categories={categories}>
         <>
           <h2 className="text-2xl mb-5">
-            {categoryLabel} Category : {blogPosts.length} posts
+            {blogPosts.length} Posts found for {categoryLabel}
           </h2>
           <BlogPosts blogPosts={blogPosts} />
         </>
