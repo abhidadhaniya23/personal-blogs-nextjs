@@ -13,7 +13,8 @@
   @apply bg-brand text-black;
 }
 html {
-  @apply bg-black !scroll-smooth;
+  /* @apply bg-black !scroll-smooth; */
+  @apply bg-black;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
 }
