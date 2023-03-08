@@ -47,5 +47,6 @@ export const getStaticProps: GetStaticProps = async () => {
       recentBlogs,
       categories,
     },
+    revalidate: 60,
   };
 };
