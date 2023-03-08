@@ -46,8 +46,8 @@ const Footer = () => {
           <div className="flex flex-col gap-2">
             <h4 className="text-lg">Abhi Dadhaniya</h4>
             <p className="text-white/50">
-              I am a full stack developer. I create stunning websites and
-              applications.
+              I am a full stack developer. I turn visitors into customers by
+              creating animated websites and web apps.
             </p>
             <a
               className="flex flex-row items-center gap-2"

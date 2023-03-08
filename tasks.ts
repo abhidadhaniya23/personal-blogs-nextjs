@@ -6,8 +6,8 @@
 // [x] Let's connect box under outlines in post page
 // [x] sort categories alphabetically
 // [x] google analytics
+// [x] sitemap generation
+// [x] google search console submission
 // [ ] pagination
-// [ ] sitemap generation
-// [ ] google search console submission
 
 export default "hello world";

@@ -59,13 +59,9 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
         url={`https://blogs.abhidadhaniya.com/post/${data.fields.slug}`}
       />
 
-      <PostPageLayout
-        readNextPosts={readNextPosts}
-        postSlug={postSlug}
-        tableOfContent={headings}
-      >
+      <PostPageLayout readNextPosts={readNextPosts} postSlug={postSlug}>
         <>
-          <div className="p-5 border border-solid border-white/10 rounded-lg">
+          <div className="p-5 rounded-lg">
             <img
               src={"https://" + data.fields.image.fields.file.url}
               // quality={50}
@@ -101,9 +97,6 @@ const PostContent = ({ readNextPosts, data, content }: PropType) => {
                   {category.fields.name}
                 </Link>
               ))}
-            </div>
-            <div className="my-3 md:my-5 block md:hidden">
-              <TableOfContent tableOfContent={headings} postSlug={postSlug} />
             </div>
           </div>
           <article className="prose-base prose-p:font-normal prose-li:list-disc prose-li:marker:text-brand prose-blockquote:rounded-lg prose-blockquote:px-5 prose-strong:text-white/70 prose-code:!font-code prose-pre:!bg-black prose-pre:p-0 prose-pre:m-0 prose-blockquote:py-0.5 prose-blockquote:border prose-blockquote:border-solid prose-blockquote:border-white/10 prose-blockquote:text-white/60 mx-auto prose-headings:text-white/70 prose-headings:font-semibold  prose-a:no-underline prose-a:border-b prose-a:pb-0.5 prose-a:border-dashed prose-a:border-brand/70 hover:prose-a:border-solid hover:prose-a:border-brand prose-a:text-white/60 hover:prose-a:text-white prose-a:mx-1 text-white/50">
