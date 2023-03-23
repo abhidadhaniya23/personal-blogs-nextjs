@@ -11,7 +11,7 @@ Here's my [portfolio](https://abhidadhaniya.com/) and it's [github repository](h
 1. Clone this repository
 
 ```bash
-git clone https://github.com/abhidadhaniya23/abhi-portfolio.git
+git clone https://github.com/abhidadhaniya23/personal-blogs-nextjs.git
 ```
 
 2. Run this command to install all the dependencies
