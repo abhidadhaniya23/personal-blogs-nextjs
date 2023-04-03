@@ -5,6 +5,10 @@ import { HiOutlineBars3CenterLeft } from "react-icons/hi2";
 const Navbar = () => {
   const links = [
     {
+      label: "GitHub",
+      link: `https://github.com/abhidadhaniya23/personal-blogs-nextjs`,
+    },
+    {
       label: "About",
       link: `https://abhidadhaniya.com${UTM_PARAMS}`,
     },
