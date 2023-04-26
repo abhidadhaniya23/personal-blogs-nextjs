@@ -156,7 +156,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
       data: data.items[0],
       content,
     },
-    revalidate: 60,
+    revalidate: 10,
   };
 };
 
