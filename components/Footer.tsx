@@ -3,6 +3,7 @@ import { FiTwitter, FiGithub, FiMail } from "react-icons/fi";
 import { RiLinkedinLine } from "react-icons/ri";
 import { SiMedium, SiDevdotto, SiHashnode } from "react-icons/si";
 import { RiShareCircleFill } from "react-icons/ri";
+import { TbBrandProducthunt, TbHeartHandshake } from "react-icons/tb";
 
 // social media links, blogs platforms, products, author card
 
@@ -18,8 +19,9 @@ const Footer = () => {
   const productLinks = [
     { label: "Foodie VVN", link: "https://foodievvn.com/" },
     { label: "GigaResources", link: "https://gigaresources.xyz/" },
+    { label: "Gumroad", link: "https://abhidadhaniya.gumroad.com/" },
   ];
-  const blogLinks = [
+  const otherLinks = [
     {
       label: "Medium",
       icon: <SiMedium className={iconStyle} />,
@@ -34,6 +36,16 @@ const Footer = () => {
       label: "Hashnode",
       icon: <SiHashnode className={iconStyle} />,
       link: "https://abhisblogs.hashnode.dev/",
+    },
+    {
+      label: "ProductHunt",
+      icon: <TbBrandProducthunt className={iconStyle} />,
+      link: "https://www.producthunt.com/@abhidadhaniya",
+    },
+    {
+      label: "PeerList",
+      icon: <TbHeartHandshake className={iconStyle} />,
+      link: "https://peerlist.io/abhidadhaniya",
     },
   ];
 
@@ -61,7 +73,7 @@ const Footer = () => {
 
         <ConnectSocialsComponent />
         <LinksComponent productLinks={productLinks} heading="Products" />
-        <LinksComponent blogLinks={blogLinks} heading="Blog Platforms" />
+        <LinksComponent otherLinks={otherLinks} heading="Other Platforms" />
       </footer>
       <hr className="border-white/10" />
       <div className="py-10 w-full text-center text-white/50 [word-spacing:2px]">
@@ -80,14 +92,14 @@ const Footer = () => {
 type LinksComponentProps = {
   productLinks?: { label: string; link: string }[];
   socialLinks?: { label: string; link: string; icon: JSX.Element }[];
-  blogLinks?: { label: string; link: string; icon: JSX.Element }[];
+  otherLinks?: { label: string; link: string; icon: JSX.Element }[];
   heading: string;
 };
 
 const LinksComponent = ({
   productLinks,
   socialLinks,
-  blogLinks,
+  otherLinks,
   heading,
 }: LinksComponentProps) => {
   return (
@@ -98,7 +110,7 @@ const LinksComponent = ({
         </h3>
         <hr className="border-white/10" />
         <div className="flex flex-col gap-2 pl-2">
-          {(productLinks || socialLinks || blogLinks)?.map(
+          {(productLinks || socialLinks || otherLinks)?.map(
             (link: LinksProps) => (
               <a
                 key={link.link}
